@@ -1,0 +1,8 @@
+<div
+  class="light-item"
+  [ngClass]="{ 'inactive-device': state === undefined }"
+  (click)="toggle()"
+>
+  <img class="light" [ngClass]="{ inactive: state }" src="assets/light.svg" />
+  <div>{{ name }}</div>
+</div>
