@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  frontend:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.frontend=me"
+      - "traefik.frontend.rule=Host:iot-xmass.wiklosoft.com"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+
+networks:
+  default:
+    external:
+      name: pwiklowski_default
