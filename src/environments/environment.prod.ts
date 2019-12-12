@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  iotServer: "wss://iot.wiklosoft.com/connect/controller"
 };
