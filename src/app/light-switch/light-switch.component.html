@@ -1,8 +1,14 @@
 <div
-  class="light-item"
-  [ngClass]="{ 'inactive-device': state === undefined }"
+  class="light-item menu-item"
   (click)="toggle()"
+  [ngClass]="{ disabled: state === undefined }"
 >
-  <img class="light" [ngClass]="{ inactive: !state }" src="assets/light.svg" />
-  <div>{{ name }}</div>
+  <img
+    class="icon"
+    [ngClass]="{ 'inactive-device': state === undefined, inactive: !state }"
+    src="assets/light.svg"
+  />
+  <div class="text" [ngClass]="{ 'inactive-device': state === undefined }">
+    {{ name }}
+  </div>
 </div>

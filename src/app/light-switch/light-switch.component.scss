@@ -1,20 +1,9 @@
 .light-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
   font-size: 26px;
 }
 
-.light {
-  width: 80px;
-}
-
-.inactive {
-  opacity: 0.5;
-}
-
-.inactive-device {
-  opacity: 0.2;
-  pointer-events: none;
+.text {
+  margin: 10px;
 }

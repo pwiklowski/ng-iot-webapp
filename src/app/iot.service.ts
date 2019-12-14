@@ -91,7 +91,7 @@ export class IotService {
       args: { deviceUuid, variableUuid, value }
     };
 
-    console.log("setValue", deviceUuid, variableUuid);
+    console.log("setValue", deviceUuid, variableUuid, value);
     this.controller.sendRequest(request, response => {});
   }
 

@@ -7,18 +7,22 @@ import { LightSwitchComponent } from "./light-switch/light-switch.component";
 import { ChristmasTreeSwitchComponent } from "./christmas-tree-switch/christmas-tree-switch.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
+import { StripAnimationComponent } from "./strip-animation/strip-animation.component";
+import { SlickModule } from "ngx-slick";
 
 @NgModule({
   declarations: [
     AppComponent,
     LightSwitchComponent,
-    ChristmasTreeSwitchComponent
+    ChristmasTreeSwitchComponent,
+    StripAnimationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SlickModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
-      enabled: true
+      enabled: environment.production
     })
   ],
   providers: [],
