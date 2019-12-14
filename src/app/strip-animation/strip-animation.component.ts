@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { IotService } from "../iot.service";
 
 enum Animation {
@@ -22,6 +22,9 @@ export class StripAnimationComponent implements OnInit {
   @Input() deviceUuid: string;
   @Input() variableUuid: string;
 
+  @ViewChild("slickModal", { static: false })
+  slickModal: ElementRef;
+
   slides = [
     { type: Animation.CHRISTMAS_1 },
     { type: Animation.RAINBOW },
@@ -40,6 +43,11 @@ export class StripAnimationComponent implements OnInit {
           console.log("new value", newValue);
           if (newValue !== undefined) {
             this.state = newValue.animation;
+            const slideNumer = this.slides.findIndex(
+              item => item.type === this.state
+            );
+
+            (this.slickModal as any).slickGoTo(slideNumer);
           } else {
             this.state = undefined;
           }
@@ -48,8 +56,10 @@ export class StripAnimationComponent implements OnInit {
   }
 
   afterChange(e) {
-    this.iot.setValue(this.deviceUuid, this.variableUuid, {
-      animation: this.slides[e.currentSlide].type
-    });
+    if (this.slides[e.currentSlide].type !== this.state) {
+      this.iot.setValue(this.deviceUuid, this.variableUuid, {
+        animation: this.slides[e.currentSlide].type
+      });
+    }
   }
 }
