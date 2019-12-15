@@ -26,9 +26,9 @@ export class StripAnimationComponent implements OnInit {
   slickModal: ElementRef;
 
   slides = [
-    { type: Animation.CHRISTMAS_1 },
-    { type: Animation.RAINBOW },
-    { type: Animation.NONE }
+    { type: Animation.CHRISTMAS_1, text: "Christmas 1" },
+    { type: Animation.RAINBOW, text: "Rainbow" },
+    { type: Animation.NONE, text: "Off" }
   ];
 
   slideConfig = { slidesToShow: 1, slidesToScroll: 1, arrows: false };
