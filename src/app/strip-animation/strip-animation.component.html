@@ -1,4 +1,8 @@
-<div class="container" [ngClass]="{ disabled: state === undefined }">
+<div
+  class="container"
+  [ngClass]="{ disabled: state === undefined }"
+  (click)="changeSetting()"
+>
   <img
     class="icon"
     [ngClass]="{ inactive: state === 'NONE' || state === undefined }"

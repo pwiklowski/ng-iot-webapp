@@ -43,9 +43,7 @@ export class StripAnimationComponent implements OnInit {
           console.log("new value", newValue);
           if (newValue !== undefined) {
             this.state = newValue.animation;
-            const slideNumer = this.slides.findIndex(
-              item => item.type === this.state
-            );
+            const slideNumer = this.getCurrentSlideNumber();
 
             (this.slickModal as any).slickGoTo(slideNumer);
           } else {
@@ -61,5 +59,13 @@ export class StripAnimationComponent implements OnInit {
         animation: this.slides[e.currentSlide].type
       });
     }
+  }
+
+  getCurrentSlideNumber() {
+    return this.slides.findIndex(item => item.type === this.state);
+  }
+
+  changeSetting() {
+    (this.slickModal as any).slickNext();
   }
 }
