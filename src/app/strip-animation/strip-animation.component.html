@@ -1,7 +1,4 @@
-<div
-  class="animation-types menu-item"
-  [ngClass]="{ disabled: state === undefined }"
->
+<div class="container" [ngClass]="{ disabled: state === undefined }">
   <img
     class="icon"
     [ngClass]="{ inactive: state === 'NONE' || state === undefined }"
@@ -10,15 +7,11 @@
   <ngx-slick
     class="carousel"
     #slickModal
+    [ngClass]="{ 'inactive-device': state === undefined }"
     [config]="slideConfig"
     (afterChange)="afterChange($event)"
   >
-    <div
-      *ngFor="let slide of slides"
-      ngxSlickItem
-      class="animation"
-      [ngClass]="{ 'inactive-device': state === undefined }"
-    >
+    <div *ngFor="let slide of slides" ngxSlickItem class="animation">
       {{ slide.type }}
     </div>
   </ngx-slick>

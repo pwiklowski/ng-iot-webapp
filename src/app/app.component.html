@@ -3,31 +3,33 @@
     <img src="assets/logo.png" class="logo" />
     Christmas Iot Control Panel
   </div>
-
-  <router-outlet></router-outlet>
-
   <div class="content">
     <app-christmas-tree-switch
+      class="menu-item"
       deviceUuid="02fd0148-7023-4e36-a6a5-79ae12753d94"
       variableUuid="c391b0c7-0464-4a8d-aee8-0fe307a85247"
     ></app-christmas-tree-switch>
     <app-light-switch
       deviceUuid="02fd0148-7023-4e36-a6a5-79ae12753d91"
+      class="menu-item box"
       variableUuid="c391b0c7-0464-4a8d-aee8-0fe307a85247"
       name="Christmas Relay 1"
     ></app-light-switch>
     <app-light-switch
+      class="menu-item box"
       deviceUuid="02fd0148-7023-4e36-a6a5-79ae12753d92"
       variableUuid="c391b0c7-0464-4a8d-aee8-0fe307a85247"
       name="Christmas Relay 2"
     ></app-light-switch>
     <app-light-switch
+      class="menu-item box"
       deviceUuid="02fd0148-7023-4e36-a6a5-79ae12753d93"
       variableUuid="c391b0c7-0464-4a8d-aee8-0fe307a85247"
       name="Christmas Relay 3"
     ></app-light-switch>
 
     <app-strip-animation
+      class="menu-item box"
       deviceUuid="62fd0148-7023-4e36-a6a5-79ae12753000"
       variableUuid="a98d0963-161c-4038-8ada-8cdefd6ff752"
     >
