@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   font-size: 26px;
+  position: relative;
 }
 
 .animation {
@@ -10,4 +11,11 @@
 .carousel {
   width: 100px;
   flex-grow: 1;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin: 20px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }

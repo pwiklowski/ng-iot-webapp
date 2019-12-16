@@ -3,6 +3,10 @@
   (click)="toggle()"
   [ngClass]="{ disabled: state === undefined }"
 >
+  <div
+    class="availability-icon"
+    [ngClass]="{ disconnected: state === undefined }"
+  ></div>
   <img
     class="icon"
     [ngClass]="{ 'inactive-device': state === undefined, inactive: !state }"

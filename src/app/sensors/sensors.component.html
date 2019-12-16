@@ -1,5 +1,8 @@
-<div class="container" [ngClass]="{ disabled: state === undefined }">
-  <div class="availability-icon"></div>
+<div class="container" [ngClass]="{ disabled: value === undefined }">
+  <div
+    class="availability-icon"
+    [ngClass]="{ disconnected: value === undefined }"
+  ></div>
 
   <div class="group">
     Temp: {{ value?.temperature }}°C <br />

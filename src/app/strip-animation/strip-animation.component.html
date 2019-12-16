@@ -3,6 +3,10 @@
   [ngClass]="{ disabled: state === undefined }"
   (click)="changeSetting()"
 >
+  <div
+    class="availability-icon"
+    [ngClass]="{ disconnected: state === undefined }"
+  ></div>
   <img
     class="icon"
     [ngClass]="{ inactive: state === 'NONE' || state === undefined }"
