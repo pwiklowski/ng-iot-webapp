@@ -1,13 +1,17 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { IotService } from "../iot.service";
 
+interface SensorsData {
+  temperature: number;
+  temperatureFormated: string;
+}
 @Component({
   selector: "app-sensors",
   templateUrl: "./sensors.component.html",
   styleUrls: ["./sensors.component.scss"]
 })
 export class SensorsComponent implements OnInit {
-  value: Object = undefined;
+  value: SensorsData = undefined;
   @Input() deviceUuid: string;
   @Input() variableUuid: string;
 
@@ -21,7 +25,7 @@ export class SensorsComponent implements OnInit {
           console.log("new value", newValue);
           if (newValue !== undefined) {
             this.value = newValue;
-            this.value.temperature = this.value.temperature.toFixed(1);
+            this.value.temperatureFormated = this.value.temperature.toFixed(1);
           } else {
             this.value = undefined;
           }
