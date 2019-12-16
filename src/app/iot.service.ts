@@ -1,13 +1,7 @@
 import { Injectable } from "@angular/core";
-import {
-  MessageType,
-  Controller,
-  Request,
-  DeviceConfig
-} from "@wiklosoft/ng-iot";
-import { Observable, BehaviorSubject, Subject, config, observable } from "rxjs";
+import { MessageType, Controller, Request } from "@wiklosoft/ng-iot";
+import { Subject } from "rxjs";
 import { environment } from "src/environments/environment";
-import { variable } from "@angular/compiler/src/output/output_ast";
 
 class VariableObserver {
   variableUuid: string;
