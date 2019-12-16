@@ -9,13 +9,15 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { StripAnimationComponent } from "./strip-animation/strip-animation.component";
 import { SlickModule } from "ngx-slick";
+import { SensorsComponent } from './sensors/sensors.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LightSwitchComponent,
     ChristmasTreeSwitchComponent,
-    StripAnimationComponent
+    StripAnimationComponent,
+    SensorsComponent
   ],
   imports: [
     BrowserModule,

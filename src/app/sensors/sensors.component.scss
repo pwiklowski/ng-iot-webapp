@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  font-size: 18px;
+  flex-direction: row;
+  position: relative;
+  padding: 10px;
+  padding-left: 30px;
+}
+.availability-icon {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: green;
+}
+
+.group {
+  width: 50%;
+}
