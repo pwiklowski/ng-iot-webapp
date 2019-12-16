@@ -4,6 +4,9 @@ import { IotService } from "../iot.service";
 interface SensorsData {
   temperature: number;
   temperatureFormated: string;
+  humidity: number;
+  light: number;
+  moisture: number;
 }
 @Component({
   selector: "app-sensors",
