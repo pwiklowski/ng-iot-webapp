@@ -5,12 +5,10 @@
   ></div>
 
   <div class="group">
+    <app-moisture-gauge value="{{ value?.moisture }}"></app-moisture-gauge>
+  </div>
+  <div class="group">
     Temp: {{ value?.temperatureFormated }}°C <br />
     Humidity: {{ value?.humidity }}% <br />
-  </div>
-
-  <div class="group">
-    Light: {{ value?.light }} <br />
-    Moisture: {{ value?.moisture }} <br />
   </div>
 </div>

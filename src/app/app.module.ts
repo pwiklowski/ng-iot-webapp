@@ -10,6 +10,7 @@ import { environment } from "../environments/environment";
 import { StripAnimationComponent } from "./strip-animation/strip-animation.component";
 import { SlickModule } from "ngx-slick";
 import { SensorsComponent } from './sensors/sensors.component';
+import { MoistureGaugeComponent } from './sensors/moisture-gauge/moisture-gauge.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SensorsComponent } from './sensors/sensors.component';
     LightSwitchComponent,
     ChristmasTreeSwitchComponent,
     StripAnimationComponent,
-    SensorsComponent
+    SensorsComponent,
+    MoistureGaugeComponent
   ],
   imports: [
     BrowserModule,

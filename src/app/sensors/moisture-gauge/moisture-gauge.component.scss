@@ -1,0 +1,39 @@
+.gauge {
+  position: relative;
+  right: 5px;
+  width: 8px;
+  height: 100%;
+  border-radius: 4px;
+  background-color: lightgray;
+}
+
+.gauge-indicator {
+  position: absolute;
+  bottom: 0px;
+  width: 8px;
+  height: 70%;
+  border-radius: 4px;
+}
+
+.gauge-good {
+  background-color: lawngreen;
+}
+
+.gauge-verybad {
+  background-color: red;
+}
+
+.gauge-medium {
+  background-color: yellowgreen;
+}
+.gauge-bad {
+  background-color: orange;
+}
+
+.gauge-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}

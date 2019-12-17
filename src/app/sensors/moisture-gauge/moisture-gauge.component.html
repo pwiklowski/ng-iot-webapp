@@ -1,0 +1,10 @@
+<div class="gauge-container">
+  <div class="gauge">
+    <div
+      class="gauge-indicator "
+      [ngClass]="getClass()"
+      [style.height.%]="percentValue"
+    ></div>
+  </div>
+  <div>Soil quality:{{ percentValue }}%</div>
+</div>
