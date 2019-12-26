@@ -9,8 +9,9 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { StripAnimationComponent } from "./strip-animation/strip-animation.component";
 import { SlickModule } from "ngx-slick";
-import { SensorsComponent } from './sensors/sensors.component';
-import { MoistureGaugeComponent } from './sensors/moisture-gauge/moisture-gauge.component';
+import { SensorsComponent } from "./sensors/sensors.component";
+import { MoistureGaugeComponent } from "./sensors/moisture-gauge/moisture-gauge.component";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MoistureGaugeComponent } from './sensors/moisture-gauge/moisture-gauge.
     ChristmasTreeSwitchComponent,
     StripAnimationComponent,
     SensorsComponent,
-    MoistureGaugeComponent
+    MoistureGaugeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,6 @@ import { MoistureGaugeComponent } from './sensors/moisture-gauge/moisture-gauge.
     })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [LoginComponent]
 })
 export class AppModule {}

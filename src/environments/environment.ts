@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  iotServer: "ws://127.0.0.1:8000/controller"
+  iotServer: "ws://127.0.0.1:8000/controller",
+  redirectUri: "http://127.0.0.1:4200/",
+  clientId: "iot"
 };
 
 /*

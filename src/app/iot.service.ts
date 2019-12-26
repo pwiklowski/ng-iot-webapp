@@ -18,7 +18,6 @@ export class IotService {
 
   constructor() {
     this.controller = new Controller();
-    this.controller.connect(environment.iotServer, null);
 
     this.controller.onOpen = () => {
       console.log("connected");
@@ -27,8 +26,8 @@ export class IotService {
       });
     };
 
-    this.controller.onClose = () => {
-      console.log("disconnected");
+    this.controller.onClose = error => {
+      console.log("disconnected", error);
     };
 
     this.controller.onMessage = message => {
@@ -76,6 +75,10 @@ export class IotService {
           break;
       }
     };
+  }
+
+  connect() {
+    this.controller.connect(environment.iotServer, null);
   }
 
   setValue(deviceUuid, variableUuid, value) {
