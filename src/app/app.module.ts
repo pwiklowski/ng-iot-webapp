@@ -12,6 +12,7 @@ import { SlickModule } from "ngx-slick";
 import { SensorsComponent } from "./sensors/sensors.component";
 import { MoistureGaugeComponent } from "./sensors/moisture-gauge/moisture-gauge.component";
 import { LoginComponent } from "./login/login.component";
+import { RootComponent } from "./root/root.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from "./login/login.component";
     StripAnimationComponent,
     SensorsComponent,
     MoistureGaugeComponent,
-    LoginComponent
+    LoginComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,6 @@ import { LoginComponent } from "./login/login.component";
     })
   ],
   providers: [],
-  bootstrap: [LoginComponent]
+  bootstrap: [RootComponent]
 })
 export class AppModule {}
