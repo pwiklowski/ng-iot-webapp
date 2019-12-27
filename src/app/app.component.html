@@ -1,4 +1,8 @@
-<div class="page">
+<div class="page" *ngIf="!isConnected()">
+  Connecting...
+</div>
+
+<div class="page" *ngIf="isConnected()">
   <div class="header">
     <img src="assets/logo.png" class="logo" />
     Christmas Iot Control Panel

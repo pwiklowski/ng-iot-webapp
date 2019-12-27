@@ -1,12 +1,18 @@
 import { Injectable } from "@angular/core";
 import { MessageType, Controller, Request } from "@wiklosoft/ng-iot";
-import { Subject } from "rxjs";
+import { Subject, Observable, BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 
 class VariableObserver {
   variableUuid: string;
   deviceUuid: string;
   observer: Subject<Object>;
+}
+
+export enum ConnectionState {
+  CONNECTED,
+  DISCONNECTED,
+  NOT_AUTHORIZED
 }
 
 @Injectable({
@@ -16,6 +22,10 @@ export class IotService {
   controller: Controller;
   observables: Array<VariableObserver> = [];
 
+  stateObserver: Subject<ConnectionState> = new BehaviorSubject(
+    ConnectionState.DISCONNECTED
+  );
+
   constructor() {
     this.controller = new Controller();
 
@@ -23,11 +33,17 @@ export class IotService {
       console.log("connected");
       this.controller.getDevices(devices => {
         console.log("devices", devices);
+        this.stateObserver.next(ConnectionState.CONNECTED);
       });
     };
 
     this.controller.onClose = error => {
-      console.log("disconnected", error);
+      console.log("disconnected", error.code);
+      if (error.code === 4403) {
+        this.stateObserver.next(ConnectionState.NOT_AUTHORIZED);
+      } else {
+        this.stateObserver.next(ConnectionState.DISCONNECTED);
+      }
     };
 
     this.controller.onMessage = message => {
@@ -77,8 +93,9 @@ export class IotService {
     };
   }
 
-  connect() {
-    this.controller.connect(environment.iotServer, null);
+  connect(token: string): Observable<ConnectionState> {
+    this.controller.connect(`${environment.iotServer}?token=${token}`, null);
+    return this.stateObserver;
   }
 
   setValue(deviceUuid, variableUuid, value) {
