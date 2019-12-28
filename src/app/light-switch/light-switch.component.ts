@@ -17,6 +17,7 @@ export class LightSwitchComponent {
   ngOnInit() {
     setTimeout(() => {
       this.iot
+        .getController()
         .observe(this.deviceUuid, this.variableUuid)
         .subscribe((newValue: any) => {
           console.log("new value", newValue);
@@ -31,6 +32,8 @@ export class LightSwitchComponent {
 
   toggle() {
     const state = !this.state;
-    this.iot.setValue(this.deviceUuid, this.variableUuid, { state });
+    this.iot
+      .getController()
+      .setValue(this.deviceUuid, this.variableUuid, { state });
   }
 }

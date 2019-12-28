@@ -23,6 +23,7 @@ export class SensorsComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.iot
+        .getController()
         .observe(this.deviceUuid, this.variableUuid)
         .subscribe((newValue: any) => {
           console.log("new value", newValue);

@@ -38,6 +38,7 @@ export class StripAnimationComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.iot
+        .getController()
         .observe(this.deviceUuid, this.variableUuid)
         .subscribe((newValue: AnimationValue) => {
           console.log("new value", newValue);
@@ -55,7 +56,7 @@ export class StripAnimationComponent implements OnInit {
 
   afterChange(e) {
     if (this.slides[e.currentSlide].type !== this.state) {
-      this.iot.setValue(this.deviceUuid, this.variableUuid, {
+      this.iot.getController().setValue(this.deviceUuid, this.variableUuid, {
         animation: this.slides[e.currentSlide].type
       });
     }

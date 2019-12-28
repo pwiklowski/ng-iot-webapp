@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
-import { IotService, ConnectionState } from "./iot.service";
+import { IotService } from "./iot.service";
 import { version } from "../../package.json";
 import { AuthService } from "./auth.service";
+import { ConnectionState } from "@wiklosoft/ng-iot";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -13,14 +14,13 @@ export class AppComponent {
 
   constructor(private iot: IotService, auth: AuthService) {
     this.version = version;
-
-    iot.connect(auth.getToken()).subscribe((state: ConnectionState) => {
-      console.log("connection state", state);
-      this.connectionState = state;
-      if (state === ConnectionState.NOT_AUTHORIZED) {
-        auth.login();
-      }
-    });
+    iot.connect(auth.getToken());
+    iot
+      .getController()
+      .getConnectionState()
+      .subscribe((state: ConnectionState) => {
+        this.connectionState = state;
+      });
   }
 
   isConnected() {
