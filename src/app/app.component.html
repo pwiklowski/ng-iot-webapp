@@ -1,23 +1,11 @@
-<div class="page" *ngIf="!isConnected()">
-  Connecting...
-</div>
+<div class="page" *ngIf="!isConnected()">Connecting...</div>
 
 <div class="page" *ngIf="isConnected()">
   <div class="header">
     <img src="assets/logo.png" class="logo" />
-    Christmas Iot Control Panel
+    Iot Control Panel
   </div>
   <div class="content">
-    <app-christmas-tree-switch
-      class="menu-item"
-      deviceUuid="02fd0148-7023-4e36-a6a5-79ae12753d92"
-      variableUuid="c391b0c7-0464-4a8d-aee8-0fe307a85247"
-    ></app-christmas-tree-switch>
-    <app-sensors
-      deviceUuid="40c23fdd-ecbc-444f-a55d-5ae55373a02b"
-      variableUuid="2898abf6-6315-48b4-b9c3-9f3c4b7d28cf"
-      class="menu-item box"
-    ></app-sensors>
     <app-light-switch
       deviceUuid="02fd0148-7023-4e36-a6a5-79ae12753d94"
       class="menu-item box"
@@ -36,13 +24,6 @@
       variableUuid="c391b0c7-0464-4a8d-aee8-0fe307a85247"
       name="Christmas Relay 3"
     ></app-light-switch>
-
-    <app-strip-animation
-      class="menu-item box"
-      deviceUuid="62fd0148-7023-4e36-a6a5-79ae12753000"
-      variableUuid="a98d0963-161c-4038-8ada-8cdefd6ff752"
-    >
-    </app-strip-animation>
   </div>
 
   <div class="footer">v{{ version }} powered by iot.wiklosoft.com</div>
