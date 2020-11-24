@@ -5,7 +5,10 @@
     <img src="assets/logo.png" class="logo" />
     Iot Control Panel
   </div>
-  <div class="content"></div>
+  <div class="content">
+    <app-iot-device *ngFor="let device of devices" class="menu-item box" deviceUuid="{{ device.deviceUuid }}">
+    </app-iot-device>
+  </div>
 
   <div class="footer">v{{ version }} powered by iot.wiklosoft.com</div>
 </div>

@@ -8,13 +8,13 @@ import { environment } from "../environments/environment";
 import { SlickModule } from "ngx-slick";
 import { LoginComponent } from "./login/login.component";
 import { RootComponent } from "./root/root.component";
+import { IotDeviceComponent } from "./iot-device/iot-device.component";
+import { JsonPipe, KeyValuePipe } from "@angular/common";
+import { VariableComponent } from "./iot-device/variable/variable.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RootComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, RootComponent, IotDeviceComponent, VariableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,8 +22,9 @@ import { RootComponent } from "./root/root.component";
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
     }),
+    FormsModule,
   ],
-  providers: [],
+  providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],
 })
 export class AppModule {}
