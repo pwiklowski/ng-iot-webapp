@@ -5,7 +5,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
-import { SlickModule } from "ngx-slick";
 import { LoginComponent } from "./login/login.component";
 import { RootComponent } from "./root/root.component";
 import { IotDeviceComponent } from "./iot-device/iot-device.component";
@@ -18,7 +17,6 @@ import { FormsModule } from "@angular/forms";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SlickModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
     }),
