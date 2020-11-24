@@ -1,14 +1,15 @@
-<div class="page" *ngIf="!isConnected()">Connecting...</div>
-
-<div class="page" *ngIf="isConnected()">
+<div class="page">
   <div class="header">
     <img src="assets/logo.png" class="logo" />
     Iot Control Panel
+
+    <div *ngIf="auth.user$ | async as user" class="user-info">{{ user.name }}</div>
   </div>
-  <div class="content">
+  <div class="content" *ngIf="isConnected()">
     <app-iot-device *ngFor="let device of devices" class="menu-item box" deviceUuid="{{ device.deviceUuid }}">
     </app-iot-device>
   </div>
+  <div class="content" *ngIf="!isConnected()">Connecting...</div>
 
   <div class="footer">v{{ version }} powered by iot.wiklosoft.com</div>
 </div>

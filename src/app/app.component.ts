@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
 import { IotService } from "./iot.service";
 import { version } from "../../package.json";
-import { AuthService } from "./auth.service";
-import { ConnectionState, DeviceConfig, IotDevice } from "@wiklosoft/ng-iot";
+import { ConnectionState, DeviceConfig } from "@wiklosoft/ng-iot";
+import { AuthService } from "@auth0/auth0-angular";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -13,9 +14,13 @@ export class AppComponent {
   connectionState: ConnectionState = ConnectionState.DISCONNECTED;
   devices = Array<DeviceConfig>();
 
-  constructor(private iot: IotService, auth: AuthService) {
+  constructor(private iot: IotService, public auth: AuthService) {
     this.version = version;
-    iot.connect(auth.getToken());
+
+    auth.idTokenClaims$.subscribe((token) => {
+      iot.connect(token.__raw);
+    });
+
     iot
       .getController()
       .getConnectionState()
