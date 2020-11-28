@@ -3,7 +3,7 @@ body,
 html {
   width: 100%;
   height: 100%;
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   overflow: hidden;
   margin: 0;
   background: #e2e1e0;
@@ -40,4 +40,9 @@ html {
 
 .disconnected {
   background-color: red;
+}
+button {
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 5px;
 }

@@ -1,7 +1,11 @@
 <div>
-  {{ name }} <br />
-  {{ variableUuid }} <br />
+  <div class="name">
+    {{ name }}
+  </div>
+  <div class="uuid">
+    {{ variableUuid }}
+  </div>
 
-  <textarea [(ngModel)]="value" rows="4" cols="50"></textarea>
+  <textarea [(ngModel)]="value" rows="4" cols="50" class="value-input"></textarea>
   <button (click)="update()">Update</button>
 </div>

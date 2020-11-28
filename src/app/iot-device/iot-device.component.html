@@ -1,13 +1,12 @@
 <div class="container">
-  <div class="availability-icon" [ngClass]="{ disconnected: state === undefined }"></div>
-
-  <div class="text">
-    {{ deviceConfig?.name }}<br />
+  <div class="name">
+    {{ deviceConfig?.name }}
+  </div>
+  <div class="uuid">
     {{ deviceUuid }}
   </div>
 
-  vars:
-  <div *ngFor="let variable of deviceConfig?.vars | keyvalue">
+  <div *ngFor="let variable of deviceConfig?.vars | keyvalue" class="variable">
     <app-variable name="{{ variable.value.name }}" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
     </app-variable>
   </div>
