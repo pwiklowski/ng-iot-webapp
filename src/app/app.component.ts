@@ -36,4 +36,8 @@ export class AppComponent {
   isConnected() {
     return this.connectionState === ConnectionState.CONNECTED;
   }
+
+  logout() {
+    this.auth.logout();
+  }
 }
