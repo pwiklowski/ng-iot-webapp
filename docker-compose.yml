@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     labels:
       - "traefik.frontend=me"
-      - "traefik.frontend.rule=Host:iot-xmass.wiklosoft.com"
+      - "traefik.frontend.rule=Host:iot-dash.wiklosoft.com"
       - "traefik.enable=true"
       - "traefik.port=80"
 

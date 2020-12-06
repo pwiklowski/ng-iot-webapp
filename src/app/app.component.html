@@ -1,8 +1,6 @@
 <div class="page">
   <div class="header">
     <img src="assets/logo.png" class="logo" />
-    Iot Control Panel
-
     <div *ngIf="auth.user$ | async as user" class="user-info">
       {{ user.name }}
     </div>
