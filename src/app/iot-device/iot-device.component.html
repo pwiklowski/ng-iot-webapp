@@ -7,7 +7,7 @@
   </div>
 
   <div *ngFor="let variable of deviceConfig?.vars | keyvalue" class="variable">
-    <app-variable name="{{ variable.value.name }}" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
+    <app-variable [variable]="variable.value" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
     </app-variable>
   </div>
 </div>

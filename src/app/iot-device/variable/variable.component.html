@@ -1,11 +1,19 @@
 <div>
   <div class="name">
-    {{ name }}
+    {{ variable.name }}
   </div>
   <div class="uuid">
     {{ variableUuid }}
   </div>
 
-  <textarea [(ngModel)]="value" rows="4" cols="50" class="value-input"></textarea>
-  <button (click)="update()">Update</button>
+  <textarea
+    #variable
+    rows="12"
+    cols="50"
+    class="value-input"
+    [ngModel]="value"
+    (ngModelChange)="validate(variable.value)"
+  ></textarea>
+  <div *ngIf="!isValid" class="validation-info">{{ validationError }}</div>
+  <button (click)="update(variable.value)" [disabled]="!isValid">Update</button>
 </div>

@@ -1,10 +1,12 @@
 .name {
   font-size: 26px;
+  padding: 4px;
 }
 
 .uuid {
   font-size: 16px;
   color: gray;
+  padding: 4px;
 }
 .value-input {
   border-radius: 5px;
@@ -12,4 +14,10 @@
   background-color: #fafafa;
   font-size: 16px;
   font-family: "Ubuntu Mono", sans-serif;
+}
+
+.validation-info {
+  font-size: 16px;
+  color: red;
+  padding: 4px;
 }
