@@ -13,9 +13,10 @@ import { IotDeviceComponent } from "./iot-device/iot-device.component";
 import { JsonPipe, KeyValuePipe } from "@angular/common";
 import { VariableComponent } from "./iot-device/variable/variable.component";
 import { FormsModule } from "@angular/forms";
+import { VariableUiComponent } from "./iot-device/variable-ui/variable-ui.component";
 
 @NgModule({
-  declarations: [AppComponent, RootComponent, IotDeviceComponent, VariableComponent],
+  declarations: [AppComponent, RootComponent, IotDeviceComponent, VariableComponent, VariableUiComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
