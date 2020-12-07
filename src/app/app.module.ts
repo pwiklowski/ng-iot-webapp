@@ -14,6 +14,7 @@ import { JsonPipe, KeyValuePipe } from "@angular/common";
 import { VariableComponent } from "./iot-device/variable/variable.component";
 import { FormsModule } from "@angular/forms";
 import { VariableUiComponent } from "./iot-device/variable-ui/variable-ui.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, RootComponent, IotDeviceComponent, VariableComponent, VariableUiComponent],
@@ -29,6 +30,7 @@ import { VariableUiComponent } from "./iot-device/variable-ui/variable-ui.compon
       domain: "wiklosoft.eu.auth0.com",
       clientId: "d9MufLpgGizDwBqZFB5JJpt3rD3xmVME",
     }),
+    BrowserAnimationsModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],
