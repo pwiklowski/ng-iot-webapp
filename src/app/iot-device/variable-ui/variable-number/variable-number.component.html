@@ -1,0 +1,22 @@
+<div *ngIf="property.maximum != undefined && property.minimum != undefined">
+  {{ name }}
+  <mat-slider
+    class="example-margin"
+    [max]="property.maximum"
+    [min]="property.minimum"
+    [step]="0.01"
+    [thumbLabel]="true"
+    [(ngModel)]="propValue"
+    (ngModelChange)="onChange()"
+  >
+  </mat-slider>
+</div>
+
+<div *ngIf="property.maximum === undefined || property.minimum === undefined">
+  {{ name }}
+
+  <mat-form-field appearance="outline">
+    <input matInput [(ngModel)]="propValue" (ngModelChange)="onChange()" type="number" />
+  </mat-form-field>
+</div>
+<div *ngIf="!isValid" class="validation-info">{{ validationError }}</div>

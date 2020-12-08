@@ -1,6 +1,8 @@
 <p>variable-ui:</p>
 
-<div *ngFor="let property of getPropertiesList(this.variable.schema) | keyvalue">
+<div *ngFor="let property of getPropertiesList(variable.schema) | keyvalue">
+  <!-- - prop {{ property.key }} {{ property.value.type }} -->
+
   <div *ngIf="property.value.type === 'string'">
     <variable-string
       [name]="property.key"
@@ -10,4 +12,16 @@
       (valueChange)="onValueChange($event)"
     ></variable-string>
   </div>
+
+  <div *ngIf="property.value.type === 'number'">
+    <variable-number
+      [name]="property.key"
+      [property]="property.value"
+      [variable]="variable"
+      [propValue]="value && value[property.key]"
+      (valueChange)="onValueChange($event)"
+    ></variable-number>
+  </div>
+
+  <!-- <div *ngFor="let property of getPropertiesList(property.value) | keyvalue">- - prop {{ property.key }}</div> -->
 </div>
