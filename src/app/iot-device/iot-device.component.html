@@ -7,9 +7,22 @@
   </div>
 
   <div *ngFor="let variable of deviceConfig?.vars | keyvalue" class="variable">
-    <app-variable [variable]="variable.value" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
-    </app-variable>
-    <app-variable-ui [variable]="variable.value" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
-    </app-variable-ui>
+    <div class="name">
+      {{ variable.value.name }}
+    </div>
+    <div class="uuid">
+      {{ variable.key }}
+    </div>
+
+    <mat-tab-group>
+      <mat-tab label="UI">
+        <app-variable-ui [variable]="variable.value" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
+        </app-variable-ui>
+      </mat-tab>
+      <mat-tab label="RAW">
+        <app-variable [variable]="variable.value" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
+        </app-variable>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>

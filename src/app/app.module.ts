@@ -19,8 +19,9 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatSelectModule } from "@angular/material/select";
 import { VariableStringComponent } from "./iot-device/variable-ui/variable-string/variable-string.component";
 import { MatInputModule } from "@angular/material/input";
-import { VariableNumberComponent } from './iot-device/variable-ui/variable-number/variable-number.component';
-import { VariableGenericComponent } from './iot-device/variable-ui/variable-generic/variable-generic.component';
+import { VariableNumberComponent } from "./iot-device/variable-ui/variable-number/variable-number.component";
+import { VariableGenericComponent } from "./iot-device/variable-ui/variable-generic/variable-generic.component";
+import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { VariableGenericComponent } from './iot-device/variable-ui/variable-gene
     MatSliderModule,
     MatSelectModule,
     MatInputModule,
+    MatTabsModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],
