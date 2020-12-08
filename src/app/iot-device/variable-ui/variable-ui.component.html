@@ -1,1 +1,13 @@
-<p>variable-ui works!</p>
+<p>variable-ui:</p>
+
+<div *ngFor="let property of getPropertiesList(this.variable.schema) | keyvalue">
+  <div *ngIf="property.value.type === 'string'">
+    <variable-string
+      [name]="property.key"
+      [property]="property.value"
+      [variable]="variable"
+      [propValue]="value && value[property.key]"
+      (valueChange)="onValueChange($event)"
+    ></variable-string>
+  </div>
+</div>

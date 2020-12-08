@@ -1,0 +1,18 @@
+<div *ngIf="property.enum">
+  {{ name }}
+  <mat-form-field appearance="outline">
+    <mat-label>Choose an option</mat-label>
+
+    <mat-select [(value)]="propValue" (selectionChange)="onChange()">
+      <mat-option *ngFor="let enum of property.enum" value="{{ enum }}">{{ enum }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf="!property.enum">
+  {{ name }}
+
+  <mat-form-field appearance="outline">
+    <input matInput [(ngModel)]="propValue" (ngModelChange)="onChange()" />
+  </mat-form-field>
+</div>
+<div *ngIf="!isValid" class="validation-info">{{ validationError }}</div>

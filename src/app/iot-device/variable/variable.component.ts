@@ -11,7 +11,6 @@ import { Validator } from "jsonschema";
 export class VariableComponent implements OnInit {
   @Input() deviceUuid: string;
   @Input() variableUuid: string;
-  @Input() name: string;
   @Input() variable: Variable;
   value: any;
   validator: Validator;

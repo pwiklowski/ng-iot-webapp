@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/theming";
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family: "Ubuntu, monospace",
+  $headline: mat-typography-level(24px, 48px, 700),
+  $body-1: mat-typography-level(12px, 26px, 400),
+);
+@include angular-material-typography($custom-typography);
+
 body,
 html {
   width: 100%;
@@ -8,6 +20,10 @@ html {
   margin: 0;
   background: #e2e1e0;
   user-select: none;
+}
+
+mat-form-field.mat-form-field {
+  font-size: 16px;
 }
 
 .icon {
