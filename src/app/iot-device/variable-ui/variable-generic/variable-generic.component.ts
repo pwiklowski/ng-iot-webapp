@@ -12,18 +12,18 @@ export class VariableGenericComponent implements OnInit {
   @Input() name: string;
   @Input() property: object; // TODO
   @Input() variable: Variable;
-  @Input() propValue: any;
   @Output() valueChange = new EventEmitter<object>();
 
   validator: Validator;
   validationError: string;
+  propValue: any;
 
   constructor() {
     this.validator = new Validator();
   }
 
   ngOnInit(): void {
-    console.log(this.property);
+    this.propValue = this.variable.value[this.name];
   }
 
   validate(value: any) {

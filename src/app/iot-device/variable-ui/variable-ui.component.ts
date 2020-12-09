@@ -11,7 +11,6 @@ export class VariableUiComponent implements OnInit {
   @Input() deviceUuid: string;
   @Input() variableUuid: string;
   @Input() variable: Variable;
-  value: object;
 
   constructor(private iot: IotService) {}
 
@@ -22,7 +21,7 @@ export class VariableUiComponent implements OnInit {
       .observe(this.deviceUuid, this.variableUuid)
       .subscribe((newValue: any) => {
         console.log("value update", newValue);
-        this.value = newValue;
+        this.variable.value = newValue;
       });
   }
 
@@ -31,7 +30,7 @@ export class VariableUiComponent implements OnInit {
   }
 
   async onValueChange(value) {
-    const newValue = { ...this.value, ...value };
+    const newValue = { ...this.variable.value, ...value };
     console.log("onValueChange", newValue);
 
     try {
