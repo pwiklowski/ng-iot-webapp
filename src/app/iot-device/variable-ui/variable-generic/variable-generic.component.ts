@@ -10,7 +10,8 @@ import { Variable } from "src/app/models";
 })
 export class VariableGenericComponent implements OnInit {
   @Input() name: string;
-  @Input() property: object; // TODO
+  @Input() parents: [];
+  @Input() property: object;
   @Input() variable: Variable;
   @Output() valueChange = new EventEmitter<object>();
 
@@ -23,7 +24,19 @@ export class VariableGenericComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.propValue = this.variable.value[this.name];
+    this.propValue = this.getPropValue();
+  }
+
+  ngOnUpdate() {
+    this.propValue = this.getPropValue();
+  }
+
+  getPropValue() {
+    let obj = this.variable.value;
+    for (let prop of this.parents) {
+      obj = obj[prop];
+    }
+    return obj;
   }
 
   validate(value: any) {
@@ -43,8 +56,19 @@ export class VariableGenericComponent implements OnInit {
     return false;
   }
 
+  getNewValue() {
+    let newValue = JSON.parse(JSON.stringify(this.variable.value));
+    let obj = newValue;
+
+    for (let prop of this.parents.slice(0, this.parents.length - 1)) {
+      obj = obj[prop];
+    }
+    obj[this.parents[this.parents.length - 1]] = this.propValue;
+    return newValue;
+  }
+
   onChange() {
-    const updatedValue = { ...this.variable.value, [this.name]: this.propValue };
+    const updatedValue = this.getNewValue();
     console.log("updated value", updatedValue);
     if (this.validate(updatedValue)) {
       this.valueChange.emit(updatedValue);

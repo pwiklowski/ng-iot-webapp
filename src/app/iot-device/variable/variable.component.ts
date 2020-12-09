@@ -26,7 +26,6 @@ export class VariableComponent implements OnInit {
       .getController()
       .observe(this.deviceUuid, this.variableUuid)
       .subscribe((newValue: any) => {
-        console.log("value update", newValue);
         this.value = JSON.stringify(newValue, null, 2);
       });
   }

@@ -9,4 +9,14 @@ import { VariableGenericComponent } from "../variable-generic/variable-generic.c
 })
 export class VariableNumberComponent extends VariableGenericComponent {
   @Input() propValue: number;
+
+  step = 0.01;
+
+  ngOnInit(): void {
+    super.ngOnInit();
+
+    if (this.property.type === "integer") {
+      this.step = 1;
+    }
+  }
 }

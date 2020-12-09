@@ -16,6 +16,5 @@ export class IotDeviceComponent implements OnInit {
 
   async ngOnInit() {
     this.deviceConfig = await this.iot.getController().getDevice(this.deviceUuid);
-    console.log(this.deviceConfig);
   }
 }
