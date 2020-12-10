@@ -11,7 +11,7 @@ import { Variable } from "src/app/models";
 export class VariableGenericComponent implements OnInit {
   @Input() name: string;
   @Input() parents: [];
-  @Input() property: object;
+  @Input() property: any;
   @Input() variable: Variable;
   @Output() valueChange = new EventEmitter<object>();
 

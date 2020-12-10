@@ -5,19 +5,27 @@
   position: relative;
   flex-direction: column;
   padding: 15px;
+  overflow: hidden;
 }
 
 .text {
   margin: 10px;
 }
 .name {
-  font-size: 26px;
+  font-size: 32px;
+  padding: 15px 0px;
 }
 
 .uuid {
   font-size: 16px;
   color: gray;
 }
-.variable {
-  margin: 20px 0;
+
+.variable-name {
+  font-size: 20px;
+}
+
+.variable-uuid {
+  font-size: 14px;
+  color: gray;
 }

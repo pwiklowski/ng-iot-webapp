@@ -1,0 +1,21 @@
+::ng-deep.variable-name {
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+::ng-deep mat-form-field.mat-form-field {
+  font-size: 18px;
+}
+
+::ng-deep.mat-form-field {
+  width: 100%;
+}
+
+::ng-deep.mat-slider-horizontal {
+  width: 100%;
+  padding: 10px;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}

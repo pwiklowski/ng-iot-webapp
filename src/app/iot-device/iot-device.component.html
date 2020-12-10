@@ -2,19 +2,12 @@
   <div class="name">
     {{ deviceConfig?.name }}
   </div>
-  <div class="uuid">
-    {{ deviceUuid }}
-  </div>
-
   <div *ngFor="let variable of deviceConfig?.vars | keyvalue" class="variable">
-    <div class="name">
+    <div class="variable-name">
       {{ variable.value.name }}
     </div>
-    <div class="uuid">
-      {{ variable.key }}
-    </div>
 
-    <mat-tab-group>
+    <mat-tab-group mat-stretch-tabs>
       <mat-tab label="UI">
         <app-variable-ui [variable]="variable.value" deviceUuid="{{ deviceUuid }}" variableUuid="{{ variable.key }}">
         </app-variable-ui>

@@ -22,6 +22,7 @@ import { MatInputModule } from "@angular/material/input";
 import { VariableNumberComponent } from "./iot-device/variable-ui/variable-number/variable-number.component";
 import { VariableGenericComponent } from "./iot-device/variable-ui/variable-generic/variable-generic.component";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatDividerModule } from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { MatTabsModule } from "@angular/material/tabs";
     MatSelectModule,
     MatInputModule,
     MatTabsModule,
+    MatDividerModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],
