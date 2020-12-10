@@ -18,5 +18,5 @@
     <input matInput [(ngModel)]="propValue" (ngModelChange)="onChange()" />
   </mat-form-field>
 </div>
-<div *ngIf="!isValid" class="validation-info">{{ validationError }}</div>
+<div *ngIf="validationError" class="validation-info">{{ validationError }}</div>
 <mat-divider></mat-divider>
