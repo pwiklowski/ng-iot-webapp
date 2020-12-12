@@ -17,10 +17,6 @@ export class AppComponent {
   constructor(private iot: IotService, public auth: AuthService) {
     this.version = version;
 
-    auth.idTokenClaims$.subscribe((token) => {
-      iot.connect(token.__raw);
-    });
-
     iot
       .getController()
       .getConnectionState()
