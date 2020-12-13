@@ -7,8 +7,7 @@
     <button class="logout" (click)="logout()">Logout</button>
   </div>
   <div class="content" *ngIf="isConnected()">
-    <app-iot-device *ngFor="let device of devices" class="menu-item box" deviceUuid="{{ device.deviceUuid }}">
-    </app-iot-device>
+    <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
   </div>
   <div class="content" *ngIf="!isConnected()">Connecting...</div>
 

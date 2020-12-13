@@ -1,10 +1,10 @@
-::ng-deep.variable-name {
+.variable-name {
   font-size: 16px;
-  padding-top: 10px;
+  padding: 8px 0px;
 }
 
 ::ng-deep mat-form-field.mat-form-field {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 ::ng-deep.mat-form-field {
