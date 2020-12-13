@@ -33,10 +33,12 @@ export class VariableGenericComponent implements OnInit {
 
   getPropValue() {
     let obj = this.variable.value;
-    for (let prop of this.parents) {
-      obj = obj[prop];
+    if (obj) {
+      for (let prop of this.parents) {
+        obj = obj[prop];
+      }
+      return obj;
     }
-    return obj;
   }
 
   validate(value: any) {
