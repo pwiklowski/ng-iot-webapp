@@ -13,18 +13,35 @@ export class AppComponent {
   version: string;
   connectionState: ConnectionState = ConnectionState.DISCONNECTED;
   devices = Array<DeviceConfig>();
+  controller: Controller;
 
   constructor(private iot: IotService, public auth: AuthService) {
     this.version = version;
+    this.controller = iot.getController();
 
-    iot
-      .getController()
-      .getConnectionState()
-      .subscribe((state: ConnectionState) => {
-        this.connectionState = state;
+    this.controller.getConnectionState().subscribe((state: ConnectionState) => {
+      this.connectionState = state;
+      if (state == ConnectionState.CONNECTED) {
+        this.onConnected();
+      }
+    });
+    this.controller.deviceConnected.subscribe((device: DeviceConfig) => {
+      console.log("device connected", device);
+      this.devices.push(device);
+    });
+
+    this.controller.deviceDisconnected.subscribe((deviceUuid: string) => {
+      console.log("device disconnected", deviceUuid);
+
+      this.devices = this.devices.filter((device) => {
+        return device.deviceUuid != deviceUuid;
       });
+    });
+  }
 
-    iot.getController().devices.subscribe((devices: any) => {
+  onConnected() {
+    this.controller.getDevices((devices) => {
+      console.log("get devices", devices);
       this.devices = devices;
     });
   }
