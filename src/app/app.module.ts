@@ -23,6 +23,10 @@ import { VariableNumberComponent } from "./iot-device/variable-ui/variable-numbe
 import { VariableGenericComponent } from "./iot-device/variable-ui/variable-generic/variable-generic.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatDividerModule } from "@angular/material/divider";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { SettingsNameDialog } from "./iot-device/settings-name/settings-name.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { MatDividerModule } from "@angular/material/divider";
     VariableStringComponent,
     VariableNumberComponent,
     VariableGenericComponent,
+    SettingsNameDialog,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,9 @@ import { MatDividerModule } from "@angular/material/divider";
     MatInputModule,
     MatTabsModule,
     MatDividerModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],

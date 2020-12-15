@@ -7,7 +7,7 @@
 $custom-typography: mat-typography-config(
   $font-family: "Ubuntu, monospace",
   $headline: mat-typography-level(24px, 48px, 700),
-  $body-1: mat-typography-level(12px, 26px, 400),
+  $body-1: mat-typography-level(16px, 26px, 500),
 );
 @include angular-material-typography($custom-typography);
 
@@ -22,10 +22,6 @@ html {
   user-select: none;
 }
 
-.mat-tab-body-wrapper {
-  padding: 15px;
-}
-
 .icon {
   width: 70px;
   height: 70px;
@@ -38,10 +34,6 @@ html {
 }
 .inactive {
   opacity: 0.5;
-}
-
-.disabled {
-  pointer-events: none;
 }
 
 .availability-icon {

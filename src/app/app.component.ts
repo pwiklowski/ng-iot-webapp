@@ -1,8 +1,10 @@
+import { SettingsService } from "./settings.service";
 import { Component } from "@angular/core";
 import { IotService } from "./iot.service";
 import { version } from "../../package.json";
-import { ConnectionState, DeviceConfig } from "@wiklosoft/ng-iot";
+import { ConnectionState, Controller, DeviceConfig } from "@wiklosoft/ng-iot";
 import { AuthService } from "@auth0/auth0-angular";
+import { Setting, VariableSetting } from "./models";
 
 @Component({
   selector: "app-root",
@@ -14,8 +16,9 @@ export class AppComponent {
   connectionState: ConnectionState = ConnectionState.DISCONNECTED;
   devices = Array<DeviceConfig>();
   controller: Controller;
+  savedSettings: Array<Setting>;
 
-  constructor(private iot: IotService, public auth: AuthService) {
+  constructor(private iot: IotService, public auth: AuthService, private settings: SettingsService) {
     this.version = version;
     this.controller = iot.getController();
 
@@ -37,6 +40,8 @@ export class AppComponent {
         return device.deviceUuid != deviceUuid;
       });
     });
+
+    this.savedSettings = this.settings.getSavedSettings();
   }
 
   onConnected() {
@@ -52,5 +57,15 @@ export class AppComponent {
 
   logout() {
     this.auth.logout();
+  }
+
+  setSetting(setting: Setting) {
+    setting.variables.map(async (variable) => {
+      try {
+        await this.iot.getController().setValue(setting.deviceUuid, variable.uuid, JSON.stringify(variable.value));
+      } catch (e) {
+        console.error(e);
+      }
+    });
   }
 }

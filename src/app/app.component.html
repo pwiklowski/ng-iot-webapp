@@ -4,9 +4,23 @@
     <div *ngIf="auth.user$ | async as user" class="user-info">
       {{ user.name }}
     </div>
-    <button class="logout" (click)="logout()">Logout</button>
+    <button mat-raised-button color="warn" class="logout" (click)="logout()">Logout</button>
   </div>
+
   <div class="content" *ngIf="isConnected()">
+    <div class="box settings">
+      <div class="settings-title">Saved settings</div>
+      <div class="settings-buttons">
+        <button
+          mat-stroked-button
+          *ngFor="let setting of savedSettings"
+          class="settings-button"
+          (click)="setSetting(setting)"
+        >
+          {{ setting.name }}
+        </button>
+      </div>
+    </div>
     <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
   </div>
   <div class="content" *ngIf="!isConnected()">Connecting...</div>
