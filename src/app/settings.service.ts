@@ -9,12 +9,12 @@ export class SettingsService {
 
   constructor() {}
 
-  save(name, deviceUuid, variables) {
+  save(name, deviceName, deviceUuid, variables) {
     let settings = JSON.parse(localStorage.getItem(this.SAVED_DEVICE_SETTINGS_KEY));
     if (settings == null) {
       settings = [];
     }
-    settings.push({ name, deviceUuid, variables });
+    settings.push({ name, deviceUuid, deviceName, variables });
     localStorage.setItem(this.SAVED_DEVICE_SETTINGS_KEY, JSON.stringify(settings));
   }
 

@@ -32,7 +32,7 @@ export class IotDeviceComponent implements OnInit {
         const variables = Object.keys(device.vars).map((key) => {
           return { uuid: key, value: device.vars[key].value };
         });
-        this.settings.save(name, this.deviceUuid, variables);
+        this.settings.save(name, this.deviceConfig.name, this.deviceUuid, variables);
       }
     });
   }

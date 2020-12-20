@@ -17,6 +17,9 @@
           class="settings-button"
           (click)="setSetting(setting)"
         >
+          <div class="settings-device-name">
+            {{ setting.deviceName }}
+          </div>
           {{ setting.name }}
         </button>
       </div>

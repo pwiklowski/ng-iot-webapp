@@ -8,6 +8,7 @@ export interface Variable {
 export interface Setting {
   name: string;
   deviceUuid: string;
+  deviceName: string;
   variables: Array<VariableSetting>;
 }
 
