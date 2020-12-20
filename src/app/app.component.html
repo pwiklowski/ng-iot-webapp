@@ -12,5 +12,9 @@
   </div>
   <div class="content" *ngIf="!isConnected()">Connecting...</div>
 
-  <div class="footer">v{{ version }} <button (click)="openPresets()">open</button></div>
+  <div class="footer" (click)="openPresets()">
+    v{{ version }}
+
+    <mat-icon class="presets-icon">menu</mat-icon>
+  </div>
 </div>
