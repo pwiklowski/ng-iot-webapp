@@ -1,5 +1,7 @@
-<button *ngIf="!isLoggedIn" (click)="auth.loginWithRedirect()">Log in</button>
+<div class="loading" *ngIf="isLoggedIn === undefined"></div>
 
-<ng-container *ngIf="isLoggedIn">
+<button *ngIf="isLoggedIn === false" (click)="auth.loginWithRedirect()">Log in</button>
+
+<ng-container *ngIf="isLoggedIn === true">
   <router-outlet></router-outlet>
 </ng-container>
