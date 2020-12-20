@@ -1,4 +1,5 @@
-import { SettingsService } from "./../settings.service";
+import { Preset } from "./../models";
+import { PresetService } from "../preset.service";
 import { IotService } from "./../iot.service";
 import { Component, Input, OnInit } from "@angular/core";
 import { DeviceConfig } from "@wiklosoft/ng-iot";
@@ -15,7 +16,7 @@ export class IotDeviceComponent implements OnInit {
 
   deviceConfig: DeviceConfig = null;
 
-  constructor(private iot: IotService, private settings: SettingsService, public dialog: MatDialog) {}
+  constructor(private iot: IotService, private presetService: PresetService, public dialog: MatDialog) {}
 
   async ngOnInit() {
     this.deviceConfig = await this.iot.getController().getDevice(this.deviceUuid);
@@ -32,7 +33,7 @@ export class IotDeviceComponent implements OnInit {
         const variables = Object.keys(device.vars).map((key) => {
           return { uuid: key, value: device.vars[key].value };
         });
-        this.settings.save(name, this.deviceConfig.name, this.deviceUuid, variables);
+        this.presetService.save(name, this.deviceConfig.name, this.deviceUuid, variables);
       }
     });
   }

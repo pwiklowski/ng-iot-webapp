@@ -5,14 +5,14 @@ export interface Variable {
   value: any;
   schema: Schema;
 }
-export interface Setting {
+export interface Preset {
   name: string;
   deviceUuid: string;
   deviceName: string;
-  variables: Array<VariableSetting>;
+  variables: Array<VariablePreset>;
 }
 
-export interface VariableSetting {
+export interface VariablePreset {
   uuid: string;
   value: object;
 }

@@ -1,11 +1,9 @@
 import { PresetsComponent } from "./presets/presets.component";
-import { SettingsService } from "./settings.service";
 import { Component } from "@angular/core";
 import { IotService } from "./iot.service";
 import { version } from "../../package.json";
 import { ConnectionState, Controller, DeviceConfig } from "@wiklosoft/ng-iot";
 import { AuthService } from "@auth0/auth0-angular";
-import { Setting } from "./models";
 import { MatBottomSheet, MatBottomSheetRef } from "@angular/material/bottom-sheet";
 
 @Component({
