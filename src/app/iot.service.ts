@@ -33,7 +33,9 @@ export class IotService {
 
   connect() {
     this.auth.idTokenClaims$.subscribe((token) => {
-      this.controller.connect(`${environment.iotServer}?token=${token.__raw}`, null);
+      if (token) {
+        this.controller.connect(`${environment.iotServer}?token=${token.__raw}`, null);
+      }
     });
   }
 
