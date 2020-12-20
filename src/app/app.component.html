@@ -8,25 +8,9 @@
   </div>
 
   <div class="content" *ngIf="isConnected()">
-    <div class="box settings">
-      <div class="settings-title">Saved settings</div>
-      <div class="settings-buttons">
-        <button
-          mat-stroked-button
-          *ngFor="let setting of savedSettings"
-          class="settings-button"
-          (click)="setSetting(setting)"
-        >
-          <div class="settings-device-name">
-            {{ setting.deviceName }}
-          </div>
-          {{ setting.name }}
-        </button>
-      </div>
-    </div>
     <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
   </div>
   <div class="content" *ngIf="!isConnected()">Connecting...</div>
 
-  <div class="footer">v{{ version }}</div>
+  <div class="footer">v{{ version }} <button (click)="openPresets()">open</button></div>
 </div>

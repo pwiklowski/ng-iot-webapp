@@ -27,6 +27,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { SettingsNameDialog } from "./iot-device/settings-name/settings-name.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { PresetsComponent } from "./presets/presets.component";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     VariableNumberComponent,
     VariableGenericComponent,
     SettingsNameDialog,
+    PresetsComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatBottomSheetModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],

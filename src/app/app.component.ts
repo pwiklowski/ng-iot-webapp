@@ -1,10 +1,12 @@
+import { PresetsComponent } from "./presets/presets.component";
 import { SettingsService } from "./settings.service";
 import { Component } from "@angular/core";
 import { IotService } from "./iot.service";
 import { version } from "../../package.json";
 import { ConnectionState, Controller, DeviceConfig } from "@wiklosoft/ng-iot";
 import { AuthService } from "@auth0/auth0-angular";
-import { Setting, VariableSetting } from "./models";
+import { Setting } from "./models";
+import { MatBottomSheet, MatBottomSheetRef } from "@angular/material/bottom-sheet";
 
 @Component({
   selector: "app-root",
@@ -16,9 +18,8 @@ export class AppComponent {
   connectionState: ConnectionState = ConnectionState.DISCONNECTED;
   devices = Array<DeviceConfig>();
   controller: Controller;
-  savedSettings: Array<Setting>;
 
-  constructor(private iot: IotService, public auth: AuthService, private settings: SettingsService) {
+  constructor(private iot: IotService, public auth: AuthService, private presets: MatBottomSheet) {
     this.version = version;
     this.controller = iot.getController();
 
@@ -40,8 +41,6 @@ export class AppComponent {
         return device.deviceUuid != deviceUuid;
       });
     });
-
-    this.savedSettings = this.settings.getSavedSettings();
   }
 
   onConnected() {
@@ -59,13 +58,7 @@ export class AppComponent {
     this.auth.logout();
   }
 
-  setSetting(setting: Setting) {
-    setting.variables.map(async (variable) => {
-      try {
-        await this.iot.getController().setValue(setting.deviceUuid, variable.uuid, JSON.stringify(variable.value));
-      } catch (e) {
-        console.error(e);
-      }
-    });
+  openPresets() {
+    this.presets.open(PresetsComponent);
   }
 }

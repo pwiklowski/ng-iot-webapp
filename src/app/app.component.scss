@@ -77,33 +77,3 @@
 .logout {
   margin: 20px;
 }
-
-.settings {
-  padding: 15px;
-  max-width: 90%;
-}
-
-.settings-buttons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.settings-title {
-  font-size: 28px;
-  padding: 5px 0px;
-}
-.settings-button {
-  margin: 5px;
-  width: 100px;
-  height: 100px;
-  white-space: pre-wrap !important;
-  line-height: 18px;
-  padding: 3px;
-}
-
-.settings-device-name {
-  font-size: 12px;
-  white-space: nowrap;
-  font-weight: bold;
-}

@@ -1,0 +1,14 @@
+<div class="settings-title">Saved settings</div>
+<div class="settings-buttons">
+  <button
+    mat-stroked-button
+    *ngFor="let setting of savedSettings"
+    class="settings-button"
+    (click)="setSetting(setting)"
+  >
+    <div class="settings-device-name">
+      {{ setting.deviceName }}
+    </div>
+    {{ setting.name }}
+  </button>
+</div>
