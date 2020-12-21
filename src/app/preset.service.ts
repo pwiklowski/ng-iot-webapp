@@ -9,12 +9,12 @@ export class PresetService {
 
   constructor() {}
 
-  save(name, deviceName, deviceUuid, variables) {
+  save(preset) {
     let presets = JSON.parse(localStorage.getItem(this.SAVED_DEVICE_SETTINGS_KEY));
     if (presets == null) {
       presets = [];
     }
-    presets.push({ name, deviceUuid, deviceName, variables });
+    presets.push(preset);
     localStorage.setItem(this.SAVED_DEVICE_SETTINGS_KEY, JSON.stringify(presets));
   }
 

@@ -1,4 +1,9 @@
 <div class="presets-title">Saved presets</div>
+
+<button mat-icon-button class="preset-new" (click)="createNewPreset()">
+  <mat-icon>add_box</mat-icon>
+</button>
+
 <div class="presets-buttons">
   <button mat-stroked-button *ngFor="let preset of savedPresets" class="presets-button" (click)="setPreset(preset)">
     <div class="presets-device-name">

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsNameComponent } from './settings-name.component';
+import { CreatePresetComponent } from './create-preset.component';
 
-describe('SettingsNameComponent', () => {
-  let component: SettingsNameComponent;
-  let fixture: ComponentFixture<SettingsNameComponent>;
+describe('CreatePresetComponent', () => {
+  let component: CreatePresetComponent;
+  let fixture: ComponentFixture<CreatePresetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingsNameComponent ]
+      declarations: [ CreatePresetComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsNameComponent);
+    fixture = TestBed.createComponent(CreatePresetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

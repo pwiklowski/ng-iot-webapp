@@ -25,10 +25,12 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { SettingsNameDialog } from "./iot-device/settings-name/settings-name.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { PresetsComponent } from "./presets/presets.component";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { CreatePresetComponent } from "./create-preset/create-preset.component";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -40,8 +42,8 @@ import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
     VariableStringComponent,
     VariableNumberComponent,
     VariableGenericComponent,
-    SettingsNameDialog,
     PresetsComponent,
+    CreatePresetComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,8 @@ import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
     MatIconModule,
     MatDialogModule,
     MatBottomSheetModule,
+    MatExpansionModule,
+    MatCheckboxModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],

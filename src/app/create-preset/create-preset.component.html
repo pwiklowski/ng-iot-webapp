@@ -1,0 +1,44 @@
+<div mat-dialog-title>Select variables for new preset</div>
+<div mat-dialog-content class="content">
+  <mat-form-field>
+    <mat-label>Settings name</mat-label>
+    <input matInput [(ngModel)]="name" />
+  </mat-form-field>
+
+  <div class="example-action-buttons">
+    <button mat-stroked-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-stroked-button (click)="accordion.closeAll()">Collapse All</button>
+  </div>
+
+  <mat-accordion multi>
+    <mat-expansion-panel *ngFor="let device of devices">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ device.name }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p></p>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let variable of device.vars | keyvalue">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-checkbox
+                #checkbox
+                class="checkbox"
+                (click)="onCheckBoxClick($event)"
+                (change)="onCheckBoxChanged(checkbox, device.deviceUuid, variable.key, variable.value.value)"
+              >
+              </mat-checkbox>
+              {{ variable.value.name }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          {{ variable.value.value | json }}
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="onNoClick()">Cancel</button>
+  <button mat-stroked-button (click)="onOkClick()" cdkFocusInitial>Ok</button>
+</div>

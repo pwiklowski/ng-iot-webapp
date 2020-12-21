@@ -7,12 +7,11 @@ export interface Variable {
 }
 export interface Preset {
   name: string;
-  deviceUuid: string;
-  deviceName: string;
   variables: Array<VariablePreset>;
 }
 
 export interface VariablePreset {
-  uuid: string;
+  deviceUuid: string;
+  variableUuid: string;
   value: object;
 }
