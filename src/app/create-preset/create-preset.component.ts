@@ -6,6 +6,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { MatAccordion } from "@angular/material/expansion";
 import { DeviceConfig } from "@wiklosoft/ng-iot";
 import { IotService } from "../iot.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-create-preset",
@@ -19,7 +20,11 @@ export class CreatePresetComponent {
   name: string;
   presets = Array<VariablePreset>();
 
-  constructor(public dialogRef: MatDialogRef<CreatePresetComponent>, private iot: IotService) {
+  constructor(
+    public dialogRef: MatDialogRef<CreatePresetComponent>,
+    private iot: IotService,
+    private snackBar: MatSnackBar
+  ) {
     iot.getController().getDevices((devices) => {
       this.devices = devices;
       console.log(devices);
@@ -33,6 +38,9 @@ export class CreatePresetComponent {
   onOkClick() {
     const preset: Preset = { name: this.name, variables: this.presets };
     this.dialogRef.close(preset);
+    this.snackBar.open("Preset saved", null, {
+      duration: 1000,
+    });
   }
 
   onCheckBoxClick($event) {
@@ -53,7 +61,6 @@ export class CreatePresetComponent {
         return !(preset.deviceUuid === deviceUuid && preset.variableUuid === variableUuid);
       });
     }
-    console.log("on checkbox changed", checkbox.checked, deviceUuid, variableUuid, value, this.presets);
   }
 
   isValid() {

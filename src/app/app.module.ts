@@ -32,6 +32,8 @@ import { CreatePresetComponent } from "./create-preset/create-preset.component";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +71,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     MatBottomSheetModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatSnackBarModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],
