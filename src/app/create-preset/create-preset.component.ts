@@ -55,4 +55,8 @@ export class CreatePresetComponent {
     }
     console.log("on checkbox changed", checkbox.checked, deviceUuid, variableUuid, value, this.presets);
   }
+
+  isValid() {
+    return this.name?.length > 0 && this.presets.length > 0;
+  }
 }
