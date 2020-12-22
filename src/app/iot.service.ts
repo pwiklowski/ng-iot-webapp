@@ -15,7 +15,7 @@ export class IotService {
   constructor(public auth: AuthService) {
     this.controller = new Controller();
     this.controller.getConnectionState().subscribe((state: ConnectionState) => {
-      console.log("connection state", state);
+      console.log("connection state", ConnectionState[state]);
       if (state === ConnectionState.NOT_AUTHORIZED) {
         //auth.login();
       } else if (state === ConnectionState.DISCONNECTED) {
@@ -35,6 +35,10 @@ export class IotService {
     this.auth.idTokenClaims$.subscribe((token) => {
       if (token) {
         this.controller.connect(`${environment.iotServer}?token=${token.__raw}`, null);
+      } else {
+        setTimeout(() => {
+          this.connect();
+        }, RECONNECT_DELAY);
       }
     });
   }
