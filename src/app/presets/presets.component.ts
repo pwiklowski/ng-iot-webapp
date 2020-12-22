@@ -17,20 +17,13 @@ export class PresetsComponent {
   constructor(
     private _bottomSheetRef: MatBottomSheetRef<PresetsComponent>,
     private presetService: PresetService,
-    private iot: IotService,
     public dialog: MatDialog
   ) {
-    this.savedPresets = this.presetService.getSavedPresets();
+    this.reloadPresets();
   }
 
-  setPreset(preset: Preset) {
-    preset.variables.map(async (preset: VariablePreset) => {
-      try {
-        await this.iot.getController().setValue(preset.deviceUuid, preset.variableUuid, JSON.stringify(preset.value));
-      } catch (e) {
-        console.error(e);
-      }
-    });
+  reloadPresets() {
+    this.savedPresets = this.presetService.getSavedPresets();
   }
 
   createNewPreset() {

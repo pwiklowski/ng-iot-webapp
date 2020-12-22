@@ -33,6 +33,9 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { LongPress } from "./long-press";
+import { MatMenuModule } from "@angular/material/menu";
+import { PresetButtonComponent } from './presets/preset-button/preset-button.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     VariableGenericComponent,
     PresetsComponent,
     CreatePresetComponent,
+    LongPress,
+    PresetButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +77,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatExpansionModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatMenuModule,
   ],
   providers: [KeyValuePipe, JsonPipe],
   bootstrap: [RootComponent],

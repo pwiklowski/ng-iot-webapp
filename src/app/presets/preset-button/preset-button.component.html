@@ -1,0 +1,18 @@
+<button
+  long-press
+  (onLongPress)="onLongPress($event)"
+  mat-stroked-button
+  class="presets-button"
+  (click)="setPreset(preset)"
+>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="removePreset()">Remove</button>
+  </mat-menu>
+  <button mat-icon-button (click)="onLongPress($event)" [matMenuTriggerFor]="menu" class="options-button">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <div class="presets-device-name">
+    {{ preset.deviceName }}
+  </div>
+  {{ preset.name }}
+</button>

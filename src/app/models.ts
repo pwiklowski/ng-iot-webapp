@@ -7,6 +7,7 @@ export interface Variable {
 }
 export interface Preset {
   name: string;
+  uuid: string;
   variables: Array<VariablePreset>;
 }
 
