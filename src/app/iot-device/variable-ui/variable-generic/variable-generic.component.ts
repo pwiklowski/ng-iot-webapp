@@ -76,4 +76,8 @@ export class VariableGenericComponent implements OnInit {
       this.valueChange.emit(updatedValue);
     }
   }
+
+  isWritable() {
+    return this.variable.access.includes("w");
+  }
 }

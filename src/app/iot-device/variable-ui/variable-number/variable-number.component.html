@@ -10,6 +10,7 @@
     [thumbLabel]="true"
     [(ngModel)]="propValue"
     (ngModelChange)="onChange()"
+    [disabled]="!isWritable()"
   >
   </mat-slider>
 </div>
@@ -20,7 +21,7 @@
   </div>
 
   <mat-form-field appearance="outline">
-    <input matInput [(ngModel)]="propValue" (ngModelChange)="onChange()" type="number" />
+    <input matInput [(ngModel)]="propValue" (ngModelChange)="onChange()" type="number" [disabled]="!isWritable()" />
   </mat-form-field>
 </div>
 <div *ngIf="validationError" class="validation-info">{{ validationError }}</div>

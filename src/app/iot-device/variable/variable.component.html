@@ -6,7 +6,8 @@
     class="value-input"
     [ngModel]="value"
     (ngModelChange)="validate(variable.value)"
+    [disabled]="!isWritable()"
   ></textarea>
   <div *ngIf="!isValid" class="validation-info">{{ validationError }}</div>
-  <button (click)="update(variable.value)" [disabled]="!isValid">Update</button>
+  <button (click)="update(variable.value)" [disabled]="!isValid" [disabled]="!isWritable()">Update</button>
 </div>

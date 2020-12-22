@@ -1,3 +1,4 @@
+import { variable } from "@angular/compiler/src/output/output_ast";
 import { ChangeDetectorRef, Component, Input, OnInit } from "@angular/core";
 import { IotService } from "src/app/iot.service";
 import { Variable } from "src/app/models";
@@ -55,5 +56,9 @@ export class VariableComponent implements OnInit {
       console.error("Unable to set value to", value);
       this.value = this.value + " "; //force refresh
     }
+  }
+
+  isWritable() {
+    return this.variable.access.includes("w");
   }
 }

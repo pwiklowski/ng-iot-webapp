@@ -2,7 +2,7 @@
   {{ name }}
 
   <mat-form-field appearance="outline">
-    <input matInput [(ngModel)]="propValue" (ngModelChange)="onChange()" />
+    <input matInput [(ngModel)]="propValue" (ngModelChange)="onChange()" [disabled]="!isWritable()" />
   </mat-form-field>
 </div>
 <div *ngIf="validationError" class="validation-info">{{ validationError }}</div>
