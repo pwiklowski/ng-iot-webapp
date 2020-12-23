@@ -36,6 +36,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { LongPress } from "./long-press";
 import { MatMenuModule } from "@angular/material/menu";
 import { PresetButtonComponent } from './presets/preset-button/preset-button.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { TokenInterceptor } from "src/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { PresetButtonComponent } from './presets/preset-button/preset-button.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
 
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
@@ -79,7 +82,15 @@ import { PresetButtonComponent } from './presets/preset-button/preset-button.com
     MatSnackBarModule,
     MatMenuModule,
   ],
-  providers: [KeyValuePipe, JsonPipe],
+  providers: [
+    KeyValuePipe,
+    JsonPipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [RootComponent],
 })
 export class AppModule {}
