@@ -5,3 +5,10 @@
 .code {
   width: 100%;
 }
+.logs {
+  height: 100px;
+  overflow: scroll;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 14px;
+}

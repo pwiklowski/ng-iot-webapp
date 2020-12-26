@@ -25,6 +25,10 @@
   <div class="code">
     Script
     <textarea class="code" rows="24" [(ngModel)]="rule.script"></textarea>
+    Logs:
+    <mat-list class="logs">
+      <div *ngFor="let log of logs">{{ log }}</div>
+    </mat-list>
   </div>
 </div>
 

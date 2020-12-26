@@ -18,6 +18,8 @@ export class RuleEditorComponent implements OnInit {
 
   deviceUuid = "";
 
+  logs = Array<string>();
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { ruleId: string },
     private iot: IotService,
@@ -33,6 +35,12 @@ export class RuleEditorComponent implements OnInit {
       variableUuid: null,
       script: null,
     };
+
+    this.iot.getController().logs.subscribe((logLine) => {
+      if (logLine.ruleId === this.ruleId) {
+        this.logs.push(logLine.ruleLogLine);
+      }
+    });
   }
 
   isCreated() {
