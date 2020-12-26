@@ -1,6 +1,7 @@
 import { variable } from "@angular/compiler/src/output/output_ast";
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { DeviceConfig, Rule } from "@wiklosoft/ng-iot";
 import { IotService } from "../iot.service";
 import { RuleSelectorComponent } from "../rule-selector/rule-selector.component";
@@ -23,7 +24,8 @@ export class RuleEditorComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { ruleId: string },
     private iot: IotService,
-    public dialogRef: MatDialogRef<RuleSelectorComponent>
+    public dialogRef: MatDialogRef<RuleSelectorComponent>,
+    private snackBar: MatSnackBar
   ) {
     this.ruleId = data?.ruleId;
     this.iot.getController().getDevices((devices) => (this.devices = devices));
@@ -64,9 +66,18 @@ export class RuleEditorComponent implements OnInit {
 
   save() {
     if (this.isCreated()) {
-      this.iot.updateRule(this.ruleId, this.rule).subscribe(() => this.dialogRef.close());
+      this.iot.updateRule(this.ruleId, this.rule).subscribe(() => {
+        this.snackBar.open("Rule updated", null, {
+          duration: 3000,
+        });
+      });
     } else {
-      this.iot.createRule(this.rule).subscribe(() => this.dialogRef.close());
+      this.iot.createRule(this.rule).subscribe(() => {
+        this.snackBar.open("Rule created", null, {
+          duration: 3000,
+        });
+        this.dialogRef.close();
+      });
     }
   }
 

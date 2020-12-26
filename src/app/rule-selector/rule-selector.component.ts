@@ -55,7 +55,7 @@ export class RuleSelectorComponent implements OnInit {
         this.iot.deleteRule(ruleId).subscribe(() => {
           this.updateRules();
           this.snackBar.open("Rule removed", null, {
-            duration: 1000,
+            duration: 3000,
           });
         });
       }
@@ -64,7 +64,7 @@ export class RuleSelectorComponent implements OnInit {
 
   createRule() {
     const dialogRef = this.dialog.open(RuleEditorComponent, {
-      minWidth: 350,
+      minWidth: 450,
     });
     this.dialogRef.close();
   }
