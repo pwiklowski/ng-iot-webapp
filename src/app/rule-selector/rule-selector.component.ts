@@ -1,7 +1,7 @@
 import { ConfigrmationDialogComponent } from "./configrmation-dialog/configrmation-dialog.component";
 import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { Rule } from "@wiklosoft/ng-iot";
+import { DeviceConfig, Rule } from "@wiklosoft/ng-iot";
 import { IotService } from "../iot.service";
 import { RuleEditorComponent } from "../rule-editor/rule-editor.component";
 import { ConfirmationDialogComponent } from "./confirmation-dialog/confirmation-dialog.component";
@@ -14,6 +14,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class RuleSelectorComponent implements OnInit {
   rules = Array<Rule>();
+  devices = Array<DeviceConfig>();
 
   constructor(
     private iot: IotService,
@@ -24,6 +25,9 @@ export class RuleSelectorComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateRules();
+    this.iot.getController().getDevices((devices) => {
+      this.devices = devices;
+    });
   }
 
   updateRules() {
@@ -63,5 +67,9 @@ export class RuleSelectorComponent implements OnInit {
       minWidth: 350,
     });
     this.dialogRef.close();
+  }
+
+  getDeviceName(deviceUuid: string) {
+    return this.devices.find((device) => device.deviceUuid === deviceUuid)?.name;
   }
 }

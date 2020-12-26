@@ -8,9 +8,7 @@
       </button>
     </mat-list-item>
     <mat-list-item *ngFor="let rule of rules" (click)="openRule(rule.id)">
-      <p matLine>
-        {{ rule.name }}
-      </p>
+      <p matLine>{{ rule.name }} - {{ getDeviceName(rule.deviceUuid) }}</p>
       <button mat-icon-button (click)="deleteRule($event, rule.id)" class="delete-icon">
         <mat-icon>delete</mat-icon>
       </button>
