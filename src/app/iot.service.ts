@@ -49,11 +49,23 @@ export class IotService {
     return this.controller;
   }
 
-  async getRules() {
-    return this.http.get(`${this.BASE_URL}/rules`).toPromise() as Promise<Array<Rule>>;
+  getRules() {
+    return this.http.get(`${this.BASE_URL}/rules`);
   }
 
-  async getRule(ruleId: string) {
-    return this.http.get(`${this.BASE_URL}/rule/${ruleId}`).toPromise() as Promise<Rule>;
+  getRule(ruleId: string) {
+    return this.http.get(`${this.BASE_URL}/rule/${ruleId}`);
+  }
+
+  updateRule(ruleId: string, rule: Rule) {
+    return this.http.patch(`${this.BASE_URL}/rule/${ruleId}`, rule);
+  }
+
+  deleteRule(ruleId: string) {
+    return this.http.delete(`${this.BASE_URL}/rule/${ruleId}`);
+  }
+
+  createRule(rule: Rule) {
+    return this.http.post(`${this.BASE_URL}/rules`, rule);
   }
 }

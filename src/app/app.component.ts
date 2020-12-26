@@ -1,3 +1,4 @@
+import { RuleEditorComponent } from "./rule-editor/rule-editor.component";
 import { CreatePresetComponent } from "./create-preset/create-preset.component";
 import { PresetsComponent } from "./presets/presets.component";
 import { Component } from "@angular/core";
@@ -7,6 +8,7 @@ import { ConnectionState, Controller, DeviceConfig } from "@wiklosoft/ng-iot";
 import { AuthService } from "@auth0/auth0-angular";
 import { MatBottomSheet, MatBottomSheetRef } from "@angular/material/bottom-sheet";
 import { MatDialog } from "@angular/material/dialog";
+import { RuleSelectorComponent } from "./rule-selector/rule-selector.component";
 
 @Component({
   selector: "app-root",
@@ -19,7 +21,12 @@ export class AppComponent {
   devices = Array<DeviceConfig>();
   controller: Controller;
 
-  constructor(private iot: IotService, public auth: AuthService, private presets: MatBottomSheet) {
+  constructor(
+    private iot: IotService,
+    public auth: AuthService,
+    private presets: MatBottomSheet,
+    public dialog: MatDialog
+  ) {
     this.version = version;
     this.controller = iot.getController();
 
@@ -60,5 +67,11 @@ export class AppComponent {
 
   openPresets() {
     this.presets.open(PresetsComponent);
+  }
+
+  openRuleEditor() {
+    const dialogRef = this.dialog.open(RuleSelectorComponent, {
+      minWidth: 350,
+    });
   }
 }

@@ -35,9 +35,13 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { LongPress } from "./long-press";
 import { MatMenuModule } from "@angular/material/menu";
-import { PresetButtonComponent } from './presets/preset-button/preset-button.component';
+import { PresetButtonComponent } from "./presets/preset-button/preset-button.component";
+import { RuleEditorComponent } from "./rule-editor/rule-editor.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "src/token.interceptor";
+import { RuleSelectorComponent } from "./rule-selector/rule-selector.component";
+import { MatListModule } from "@angular/material/list";
+import { ConfirmationDialogComponent } from './rule-selector/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,9 @@ import { TokenInterceptor } from "src/token.interceptor";
     CreatePresetComponent,
     LongPress,
     PresetButtonComponent,
+    RuleEditorComponent,
+    RuleSelectorComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +88,7 @@ import { TokenInterceptor } from "src/token.interceptor";
     MatCheckboxModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatListModule,
   ],
   providers: [
     KeyValuePipe,

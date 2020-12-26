@@ -1,0 +1,34 @@
+<div mat-dialog-title>Create new rule</div>
+<div mat-dialog-content>
+  <div class="options">
+    <mat-form-field appearance="outline">
+      <mat-label>Rule name</mat-label>
+      <input matInput [(ngModel)]="rule.name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Select a device</mat-label>
+      <mat-select [(ngModel)]="rule.deviceUuid" [compareWith]="compareDevices">
+        <mat-option *ngFor="let device of devices" value="{{ device.deviceUuid }}">{{ device.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Select a varaible</mat-label>
+      <mat-select [(ngModel)]="rule.variableUuid">
+        <mat-option *ngFor="let variable of getVariables() | keyvalue" value="{{ variable.key }}">
+          {{ variable.value.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="code">
+    Script
+    <textarea class="code" rows="24" [(ngModel)]="rule.script"></textarea>
+  </div>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+  <button mat-stroked-button (click)="save()" [disabled]="!isValid()">Save</button>
+</mat-dialog-actions>

@@ -9,6 +9,8 @@
 
   <div class="content" *ngIf="isConnected()">
     <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
+
+    <button class="rule-editor-button" (click)="openRuleEditor()">Rule editor</button>
   </div>
   <div class="content" *ngIf="!isConnected()">Connecting...</div>
 
