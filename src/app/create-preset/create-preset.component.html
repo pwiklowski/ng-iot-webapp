@@ -27,6 +27,7 @@
                 class="checkbox"
                 (click)="onCheckBoxClick($event)"
                 (change)="onCheckBoxChanged(checkbox, device.deviceUuid, variable.key, variable.value.value)"
+                [disabled]="!isWritable(variable.value)"
               >
               </mat-checkbox>
               {{ variable.value.name }}

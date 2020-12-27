@@ -1,3 +1,4 @@
+import { Variable } from "src/app/models";
 import { Preset, VariablePreset } from "./../models";
 import { ViewChild } from "@angular/core";
 import { Component } from "@angular/core";
@@ -65,5 +66,9 @@ export class CreatePresetComponent {
 
   isValid() {
     return this.name?.length > 0 && this.presets.length > 0;
+  }
+
+  isWritable(variable: Variable) {
+    return variable.access.includes("w");
   }
 }
