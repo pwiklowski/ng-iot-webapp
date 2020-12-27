@@ -3,6 +3,7 @@
 @import "~@angular/material/theming";
 @import "~codemirror/lib/codemirror";
 @import "~codemirror/theme/material";
+@import "~codemirror/addon/lint/lint";
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
@@ -55,4 +56,8 @@ button {
   border-radius: 5px;
   border: 1px solid gray;
   padding: 5px;
+}
+
+.CodeMirror-lint-tooltip {
+  z-index: 1000;
 }

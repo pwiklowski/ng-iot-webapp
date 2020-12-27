@@ -32,6 +32,8 @@ export class RuleEditorComponent implements OnInit {
     autoRefresh: true,
     matchBrackets: true,
     mode: { name: "javascript", json: true },
+    gutters: ["CodeMirror-lint-markers"],
+    lint: true,
   };
 
   constructor(
@@ -42,7 +44,6 @@ export class RuleEditorComponent implements OnInit {
   ) {
     this.ruleId = data?.ruleId;
     this.iot.getController().getDevices((devices) => (this.devices = devices));
-    console.log("rule id", this.ruleId);
 
     this.rule = {
       name: null,
