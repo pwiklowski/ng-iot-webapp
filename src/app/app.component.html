@@ -10,13 +10,20 @@
   <div class="content" *ngIf="isConnected()">
     <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
 
-    <button class="rule-editor-button" (click)="openRuleEditor()">Rule editor</button>
+    <button mat-fab class="rule-editor-button" (click)="openRuleEditor()" matTooltip="Rules" matTooltipPosition="left">
+      <mat-icon>rule</mat-icon>
+    </button>
+    <button
+      mat-fab
+      class="presets-editor-button"
+      (click)="openPresets()"
+      matTooltip="Presets"
+      matTooltipPosition="left"
+    >
+      <mat-icon>settings_remote</mat-icon>
+    </button>
   </div>
   <div class="content" *ngIf="!isConnected()">Connecting...</div>
 
-  <div class="footer" (click)="openPresets()">
-    v{{ version }}
-
-    <mat-icon class="presets-icon">menu</mat-icon>
-  </div>
+  <div class="footer">v{{ version }}</div>
 </div>

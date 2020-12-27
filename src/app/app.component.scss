@@ -84,6 +84,16 @@
 
 .rule-editor-button {
   position: absolute;
-  right: 20px;
+  right: 30px;
+  bottom: 130px;
+}
+
+.presets-editor-button {
+  position: absolute;
+  right: 30px;
   bottom: 60px;
+}
+
+::ng-deep .mat-tooltip {
+  font-size: 14px;
 }

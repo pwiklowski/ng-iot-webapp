@@ -43,6 +43,7 @@ import { RuleSelectorComponent } from "./rule-selector/rule-selector.component";
 import { MatListModule } from "@angular/material/list";
 import { ConfirmationDialogComponent } from "./rule-selector/confirmation-dialog/confirmation-dialog.component";
 import { CodemirrorModule } from "@ctrl/ngx-codemirror";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { CodemirrorModule } from "@ctrl/ngx-codemirror";
     MatListModule,
     FormsModule,
     CodemirrorModule,
+    MatTooltipModule,
   ],
   providers: [
     KeyValuePipe,
