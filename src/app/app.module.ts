@@ -41,7 +41,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "src/token.interceptor";
 import { RuleSelectorComponent } from "./rule-selector/rule-selector.component";
 import { MatListModule } from "@angular/material/list";
-import { ConfirmationDialogComponent } from './rule-selector/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from "./rule-selector/confirmation-dialog/confirmation-dialog.component";
+import { CodemirrorModule } from "@ctrl/ngx-codemirror";
 
 @NgModule({
   declarations: [
@@ -89,6 +90,8 @@ import { ConfirmationDialogComponent } from './rule-selector/confirmation-dialog
     MatSnackBarModule,
     MatMenuModule,
     MatListModule,
+    FormsModule,
+    CodemirrorModule,
   ],
   providers: [
     KeyValuePipe,

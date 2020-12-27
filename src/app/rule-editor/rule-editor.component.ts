@@ -1,10 +1,11 @@
-import { variable } from "@angular/compiler/src/output/output_ast";
+import { ViewChild } from "@angular/core";
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { DeviceConfig, Rule } from "@wiklosoft/ng-iot";
 import { IotService } from "../iot.service";
 import { RuleSelectorComponent } from "../rule-selector/rule-selector.component";
+import beautify_js from "js-beautify";
 
 @Component({
   selector: "app-rule-editor",
@@ -12,14 +13,26 @@ import { RuleSelectorComponent } from "../rule-selector/rule-selector.component"
   styleUrls: ["./rule-editor.component.scss"],
 })
 export class RuleEditorComponent implements OnInit {
-  devices = Array<DeviceConfig>();
+  @ViewChild("codeMirror") codeMirror: any;
 
+  devices = Array<DeviceConfig>();
   ruleId = null;
   rule: Rule;
+  ready = false;
 
   deviceUuid = "";
 
   logs = Array<string>();
+
+  editorOptions = {
+    lineNumbers: true,
+    extraKeys: { "Ctrl-Space": "autocomplete" },
+    styleActiveLine: true,
+    autoCloseBrackets: true,
+    autoRefresh: true,
+    matchBrackets: true,
+    mode: { name: "javascript", json: true },
+  };
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { ruleId: string },
@@ -38,11 +51,13 @@ export class RuleEditorComponent implements OnInit {
       script: null,
     };
 
-    this.iot.getController().logs.subscribe((logLine) => {
+    this.iot.getController().logs.subscribe((logLine: any) => {
       if (logLine.ruleId === this.ruleId) {
         this.logs.push(logLine.ruleLogLine);
       }
     });
+
+    this.dialogRef.afterOpened().subscribe(() => setTimeout(() => (this.ready = true), 0));
   }
 
   isCreated() {
@@ -53,9 +68,19 @@ export class RuleEditorComponent implements OnInit {
     if (this.ruleId !== undefined) {
       this.iot.getRule(this.ruleId).subscribe((rule: Rule) => {
         this.rule = rule;
+        this.formatCode();
       });
     }
   }
+
+  formatCode() {
+    this.rule.script = beautify_js(this.rule.script, {
+      indent_size: 2,
+      indent_char: " ",
+      wrap_line_length: 80,
+    });
+  }
+
   compareDevices(dev1, dev2) {
     return dev1 === dev2;
   }
@@ -71,6 +96,7 @@ export class RuleEditorComponent implements OnInit {
           duration: 3000,
         });
       });
+      this.formatCode();
     } else {
       this.iot.createRule(this.rule).subscribe(() => {
         this.snackBar.open("Rule created", null, {

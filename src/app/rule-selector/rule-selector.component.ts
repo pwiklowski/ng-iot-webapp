@@ -1,4 +1,3 @@
-import { ConfigrmationDialogComponent } from "./configrmation-dialog/configrmation-dialog.component";
 import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DeviceConfig, Rule } from "@wiklosoft/ng-iot";

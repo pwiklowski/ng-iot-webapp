@@ -23,9 +23,9 @@
   </div>
 
   <div class="code">
-    Script
-    <textarea class="code" rows="24" [(ngModel)]="rule.script"></textarea>
-    Logs:
+    <h2>Script</h2>
+    <ngx-codemirror *ngIf="ready" #codeMirror [(ngModel)]="rule.script" [options]="editorOptions"></ngx-codemirror>
+    <h2>Logs:</h2>
     <mat-list class="logs">
       <div *ngFor="let log of logs">{{ log }}</div>
     </mat-list>
