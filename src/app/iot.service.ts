@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AuthService } from "@auth0/auth0-angular";
-import { Controller, ConnectionState, Rule } from "@wiklosoft/ng-iot";
+import { Controller, ConnectionState, Rule, Preset } from "@wiklosoft/ng-iot";
 import { environment } from "src/environments/environment";
 
 const RECONNECT_DELAY = 5000;
@@ -67,5 +67,25 @@ export class IotService {
 
   createRule(rule: Rule) {
     return this.http.post(`${this.BASE_URL}/rules`, rule);
+  }
+
+  getPresets() {
+    return this.http.get(`${this.BASE_URL}/presets`);
+  }
+
+  getPreset(presetId: string) {
+    return this.http.get(`${this.BASE_URL}/preset/${presetId}`);
+  }
+
+  updatePreset(presetId: string, preset: Preset) {
+    return this.http.patch(`${this.BASE_URL}/preset/${presetId}`, preset);
+  }
+
+  deletePreset(presetId: string) {
+    return this.http.delete(`${this.BASE_URL}/preset/${presetId}`);
+  }
+
+  createPreset(preset: Preset) {
+    return this.http.post(`${this.BASE_URL}/presets`, preset);
   }
 }

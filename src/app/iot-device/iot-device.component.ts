@@ -1,5 +1,3 @@
-import { Preset } from "./../models";
-import { PresetService } from "../preset.service";
 import { IotService } from "./../iot.service";
 import { Component, Input, OnInit } from "@angular/core";
 import { DeviceConfig } from "@wiklosoft/ng-iot";

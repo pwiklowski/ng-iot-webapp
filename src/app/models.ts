@@ -7,14 +7,3 @@ export interface Variable {
   access: Permission;
   schema: Schema;
 }
-export interface Preset {
-  name: string;
-  uuid: string;
-  variables: Array<VariablePreset>;
-}
-
-export interface VariablePreset {
-  deviceUuid: string;
-  variableUuid: string;
-  value: object;
-}

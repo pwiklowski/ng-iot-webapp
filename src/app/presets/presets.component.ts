@@ -1,10 +1,11 @@
-import { Preset, VariablePreset } from "./../models";
 import { Component } from "@angular/core";
 import { MatBottomSheetRef } from "@angular/material/bottom-sheet";
 import { MatDialog } from "@angular/material/dialog";
 import { CreatePresetComponent } from "../create-preset/create-preset.component";
 import { IotService } from "../iot.service";
-import { PresetService } from "../preset.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Preset } from "@wiklosoft/ng-iot";
+import { ChangeDetectorRef } from "@angular/core";
 
 @Component({
   selector: "app-presets",
@@ -16,14 +17,19 @@ export class PresetsComponent {
 
   constructor(
     private _bottomSheetRef: MatBottomSheetRef<PresetsComponent>,
-    private presetService: PresetService,
-    public dialog: MatDialog
+    private iot: IotService,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private cdr: ChangeDetectorRef
   ) {
     this.reloadPresets();
   }
 
   reloadPresets() {
-    this.savedPresets = this.presetService.getSavedPresets();
+    this.iot.getPresets().subscribe((presets: Array<Preset>) => {
+      this.savedPresets = presets;
+      this.cdr.markForCheck();
+    });
   }
 
   createNewPreset() {
@@ -34,7 +40,11 @@ export class PresetsComponent {
     });
     dialogRef.afterClosed().subscribe(async (preset: Preset) => {
       if (preset) {
-        this.presetService.save(preset);
+        this.iot.createPreset(preset).subscribe(() => {
+          this.snackBar.open("Preset created", null, {
+            duration: 1000,
+          });
+        });
       }
     });
   }

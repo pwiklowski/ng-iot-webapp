@@ -1,11 +1,10 @@
 import { Variable } from "src/app/models";
-import { Preset, VariablePreset } from "./../models";
 import { ViewChild } from "@angular/core";
 import { Component } from "@angular/core";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatAccordion } from "@angular/material/expansion";
-import { DeviceConfig } from "@wiklosoft/ng-iot";
+import { DeviceConfig, Preset, VariablePreset } from "@wiklosoft/ng-iot";
 import { IotService } from "../iot.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 

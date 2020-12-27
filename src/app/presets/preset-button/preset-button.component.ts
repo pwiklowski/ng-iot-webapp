@@ -1,10 +1,10 @@
-import { Preset, VariablePreset } from "./../../models";
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { MatMenuTrigger } from "@angular/material/menu";
 import { IotService } from "src/app/iot.service";
-import { PresetService } from "src/app/preset.service";
 import { Output } from "@angular/core";
 import { EventEmitter } from "@angular/core";
+import { Preset, VariablePreset } from "@wiklosoft/ng-iot";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-preset-button",
@@ -16,7 +16,7 @@ export class PresetButtonComponent implements OnInit {
   @Output() onPresetsChanged = new EventEmitter();
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
-  constructor(private iot: IotService, private presetService: PresetService) {}
+  constructor(private iot: IotService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {}
 
@@ -31,8 +31,12 @@ export class PresetButtonComponent implements OnInit {
   }
 
   removePreset() {
-    this.presetService.remove(this.preset);
-    this.onPresetsChanged.emit(this.preset.uuid);
+    this.iot.deletePreset(this.preset.id).subscribe(() => {
+      this.snackBar.open("Preset removed", null, {
+        duration: 1000,
+      });
+      this.onPresetsChanged.emit(this.preset.uuid);
+    });
   }
 
   onLongPress($event) {
