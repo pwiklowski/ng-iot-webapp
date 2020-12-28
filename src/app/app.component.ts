@@ -37,8 +37,6 @@ export class AppComponent {
       }
     });
     this.controller.deviceConnected.subscribe((connectedDevice: DeviceConfig) => {
-      console.log("device connected", connectedDevice.deviceUuid);
-
       const device = this.devices.find((device: DeviceConfig) => device.deviceUuid === connectedDevice.deviceUuid);
 
       if (device) {
@@ -51,12 +49,10 @@ export class AppComponent {
       } else {
         this.devices.push(connectedDevice);
       }
-      console.log(this.devices);
       this.cdr.detectChanges();
     });
 
     this.controller.deviceDisconnected.subscribe((deviceUuid: string) => {
-      console.log("device disconnected", deviceUuid);
       this.devices = this.devices.map((device) => {
         if (device.deviceUuid === deviceUuid) {
           return { ...device, isConnected: false };
@@ -68,7 +64,6 @@ export class AppComponent {
 
   onConnected() {
     this.controller.getDevices((devices) => {
-      console.log("get devices", devices);
       this.devices = devices;
     });
   }
