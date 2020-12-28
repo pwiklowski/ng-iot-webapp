@@ -41,9 +41,7 @@ export class PresetsComponent {
     dialogRef.afterClosed().subscribe(async (preset: Preset) => {
       if (preset) {
         this.iot.createPreset(preset).subscribe(() => {
-          this.snackBar.open("Preset created", null, {
-            duration: 1000,
-          });
+          this.snackBar.open("Preset created", null);
         });
       }
     });

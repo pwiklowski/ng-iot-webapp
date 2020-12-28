@@ -54,9 +54,7 @@ export class RuleSelectorComponent implements OnInit {
       if (result) {
         this.iot.deleteRule(ruleId).subscribe(() => {
           this.updateRules();
-          this.snackBar.open("Rule removed", null, {
-            duration: 3000,
-          });
+          this.snackBar.open("Rule removed", null);
         });
       }
     });

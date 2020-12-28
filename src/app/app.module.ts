@@ -32,7 +32,7 @@ import { CreatePresetComponent } from "./create-preset/create-preset.component";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
 import { LongPress } from "./long-press";
 import { MatMenuModule } from "@angular/material/menu";
 import { PresetButtonComponent } from "./presets/preset-button/preset-button.component";
@@ -103,6 +103,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
       useClass: TokenInterceptor,
       multi: true,
     },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
   ],
   bootstrap: [RootComponent],
 })

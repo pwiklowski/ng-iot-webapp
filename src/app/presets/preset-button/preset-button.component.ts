@@ -32,9 +32,7 @@ export class PresetButtonComponent implements OnInit {
 
   removePreset() {
     this.iot.deletePreset(this.preset.id).subscribe(() => {
-      this.snackBar.open("Preset removed", null, {
-        duration: 1000,
-      });
+      this.snackBar.open("Preset removed", null);
       this.onPresetsChanged.emit(this.preset.uuid);
     });
   }

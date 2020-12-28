@@ -38,9 +38,7 @@ export class CreatePresetComponent {
   onOkClick() {
     const preset: Preset = { name: this.name, variables: this.presets };
     this.dialogRef.close(preset);
-    this.snackBar.open("Preset saved", null, {
-      duration: 1000,
-    });
+    this.snackBar.open("Preset saved", null);
   }
 
   onCheckBoxClick($event) {

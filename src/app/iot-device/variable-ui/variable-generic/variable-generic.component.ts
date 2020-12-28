@@ -71,7 +71,6 @@ export class VariableGenericComponent implements OnInit {
 
   onChange() {
     const updatedValue = this.getNewValue();
-    console.log("updated value", updatedValue);
     if (this.validate(updatedValue)) {
       this.valueChange.emit(updatedValue);
     }

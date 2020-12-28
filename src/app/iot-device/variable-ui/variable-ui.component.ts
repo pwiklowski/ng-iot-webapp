@@ -1,3 +1,4 @@
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { VariableNumberComponent } from "./variable-number/variable-number.component";
 import { VariableStringComponent } from "./variable-string/variable-string.component";
 import {
@@ -30,7 +31,12 @@ export class VariableUiComponent implements OnInit {
   propertiesUi = [];
   controller: Controller;
 
-  constructor(private iot: IotService, private resolver: ComponentFactoryResolver, private cdr: ChangeDetectorRef) {
+  constructor(
+    private iot: IotService,
+    private resolver: ComponentFactoryResolver,
+    private cdr: ChangeDetectorRef,
+    private snackbar: MatSnackBar
+  ) {
     this.controller = iot.getController();
   }
 
@@ -97,7 +103,13 @@ export class VariableUiComponent implements OnInit {
     try {
       const res = await this.controller.setValue(this.deviceUuid, this.variableUuid, JSON.stringify(newValue));
     } catch (e) {
-      console.error("Unable to set value to", newValue);
+      console.warn("Unable to set value to", newValue, this.variable.value);
+
+      this.snackbar.open(`Unable to set value to ${JSON.stringify(newValue)}`);
+
+      this.propertiesUi.map((component) => {
+        component.instance.ngOnUpdate();
+      });
     }
   }
 }

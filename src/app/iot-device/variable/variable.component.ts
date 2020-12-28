@@ -1,5 +1,5 @@
-import { variable } from "@angular/compiler/src/output/output_ast";
-import { ChangeDetectorRef, Component, Input, OnInit } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Component, Input, OnInit } from "@angular/core";
 import { IotService } from "src/app/iot.service";
 import { Variable } from "src/app/models";
 import { Validator } from "jsonschema";
@@ -18,7 +18,7 @@ export class VariableComponent implements OnInit {
   isValid = true;
   validationError: string;
 
-  constructor(private iot: IotService) {
+  constructor(private iot: IotService, private snackbar: MatSnackBar) {
     this.validator = new Validator();
   }
 
@@ -50,10 +50,11 @@ export class VariableComponent implements OnInit {
 
   async update(value: any) {
     try {
-      this.value = await this.iot.getController().setValue(this.deviceUuid, this.variableUuid, value);
+      this.value = await this.iot.getController().setValue(this.deviceUuid, this.variableUuid, JSON.parse(value));
     } catch (e) {
-      console.error("Unable to set value to", value);
+      console.warn("Unable to set value to", value);
       this.value = this.value + " "; //force refresh
+      this.snackbar.open(`Unable to set value to ${value}`);
     }
   }
 

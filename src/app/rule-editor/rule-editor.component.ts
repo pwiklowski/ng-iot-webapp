@@ -93,16 +93,12 @@ export class RuleEditorComponent implements OnInit {
   save() {
     if (this.isCreated()) {
       this.iot.updateRule(this.ruleId, this.rule).subscribe(() => {
-        this.snackBar.open("Rule updated", null, {
-          duration: 3000,
-        });
+        this.snackBar.open("Rule updated", null);
       });
       this.formatCode();
     } else {
       this.iot.createRule(this.rule).subscribe(() => {
-        this.snackBar.open("Rule created", null, {
-          duration: 3000,
-        });
+        this.snackBar.open("Rule created", null);
         this.dialogRef.close();
       });
     }
