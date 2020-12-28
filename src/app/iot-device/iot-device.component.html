@@ -1,7 +1,6 @@
 <div class="container">
-  <div class="name">
-    {{ deviceConfig?.name }}
-  </div>
+  <div class="connection-indicator" [class.disconnected]="!deviceConfig?.isConnected"></div>
+  <div class="name">{{ deviceConfig?.name }}</div>
   <div *ngFor="let variable of deviceConfig?.vars | keyvalue" class="variable">
     <div class="variable-name">
       {{ variable.value.name }}

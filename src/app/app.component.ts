@@ -1,5 +1,3 @@
-import { RuleEditorComponent } from "./rule-editor/rule-editor.component";
-import { CreatePresetComponent } from "./create-preset/create-preset.component";
 import { PresetsComponent } from "./presets/presets.component";
 import { Component } from "@angular/core";
 import { IotService } from "./iot.service";
@@ -9,6 +7,7 @@ import { AuthService } from "@auth0/auth0-angular";
 import { MatBottomSheet, MatBottomSheetRef } from "@angular/material/bottom-sheet";
 import { MatDialog } from "@angular/material/dialog";
 import { RuleSelectorComponent } from "./rule-selector/rule-selector.component";
+import { ChangeDetectorRef } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -25,7 +24,8 @@ export class AppComponent {
     private iot: IotService,
     public auth: AuthService,
     private presets: MatBottomSheet,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private cdr: ChangeDetectorRef
   ) {
     this.version = version;
     this.controller = iot.getController();
@@ -36,16 +36,32 @@ export class AppComponent {
         this.onConnected();
       }
     });
-    this.controller.deviceConnected.subscribe((device: DeviceConfig) => {
-      console.log("device connected", device);
-      this.devices.push(device);
+    this.controller.deviceConnected.subscribe((connectedDevice: DeviceConfig) => {
+      console.log("device connected", connectedDevice.deviceUuid);
+
+      const device = this.devices.find((device: DeviceConfig) => device.deviceUuid === connectedDevice.deviceUuid);
+
+      if (device) {
+        this.devices = this.devices.map((device) => {
+          if (device.deviceUuid === connectedDevice.deviceUuid) {
+            return { ...device, isConnected: false };
+          }
+          return device;
+        });
+      } else {
+        this.devices.push(connectedDevice);
+      }
+      console.log(this.devices);
+      this.cdr.detectChanges();
     });
 
     this.controller.deviceDisconnected.subscribe((deviceUuid: string) => {
       console.log("device disconnected", deviceUuid);
-
-      this.devices = this.devices.filter((device) => {
-        return device.deviceUuid != deviceUuid;
+      this.devices = this.devices.map((device) => {
+        if (device.deviceUuid === deviceUuid) {
+          return { ...device, isConnected: false };
+        }
+        return device;
       });
     });
   }
@@ -70,7 +86,7 @@ export class AppComponent {
   }
 
   openRuleEditor() {
-    const dialogRef = this.dialog.open(RuleSelectorComponent, {
+    this.dialog.open(RuleSelectorComponent, {
       minWidth: 350,
     });
   }
