@@ -5,7 +5,7 @@ import { AppModule } from "./app/app.module";
 import { environment } from "./environments/environment";
 
 import { JSHINT } from "jshint";
-window.JSHINT = JSHINT;
+(window as any).JSHINT = JSHINT;
 
 import "codemirror/mode/javascript/javascript";
 import "codemirror/addon/lint/lint.js";
