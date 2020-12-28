@@ -12,7 +12,7 @@ const RECONNECT_DELAY = 5000;
 export class IotService {
   controller: Controller;
   connectionState: ConnectionState = -1;
-  BASE_URL = "http://localhost:8080";
+  BASE_URL = environment.BASE_URL;
 
   constructor(public auth: AuthService, private http: HttpClient) {
     this.controller = new Controller();
