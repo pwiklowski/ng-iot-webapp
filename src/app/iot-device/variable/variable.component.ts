@@ -50,11 +50,11 @@ export class VariableComponent implements OnInit {
 
   async update(value: any) {
     try {
-      this.value = await this.iot.getController().setValue(this.deviceUuid, this.variableUuid, JSON.parse(value));
+      this.value = await this.iot.getController().setValue(this.deviceUuid, this.variableUuid, value);
     } catch (e) {
-      console.warn("Unable to set value to", value);
+      this.snackbar.open(`Unable to set value to ${value}. ${e}`);
+      console.warn("Unable to set value to", value, e);
       this.value = this.value + " "; //force refresh
-      this.snackbar.open(`Unable to set value to ${value}`);
     }
   }
 

@@ -25,7 +25,8 @@ export class PresetButtonComponent implements OnInit {
       try {
         await this.iot.getController().setValue(preset.deviceUuid, preset.variableUuid, JSON.stringify(preset.value));
       } catch (e) {
-        console.error(e);
+        this.snackBar.open(`Unable to set value to ${preset.value}. ${e}`);
+        console.warn("Unable to set value to", preset.value, e);
       }
     });
   }

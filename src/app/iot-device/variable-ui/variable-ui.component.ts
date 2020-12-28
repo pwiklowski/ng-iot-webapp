@@ -103,9 +103,8 @@ export class VariableUiComponent implements OnInit {
     try {
       const res = await this.controller.setValue(this.deviceUuid, this.variableUuid, JSON.stringify(newValue));
     } catch (e) {
-      console.warn("Unable to set value to", newValue, this.variable.value);
-
-      this.snackbar.open(`Unable to set value to ${JSON.stringify(newValue)}`);
+      this.snackbar.open(`Unable to set value to ${JSON.stringify(newValue)}. ${e}`);
+      console.warn("Unable to set value to", newValue, e);
 
       this.propertiesUi.map((component) => {
         component.instance.ngOnUpdate();
