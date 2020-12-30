@@ -22,14 +22,16 @@
     </mat-form-field>
   </div>
 
-  <div class="code">
-    <h2>Script</h2>
-    <ngx-codemirror *ngIf="ready" #codeMirror [(ngModel)]="rule.script" [options]="editorOptions"></ngx-codemirror>
-    <h2>Logs:</h2>
-    <mat-list class="logs">
-      <div *ngFor="let log of logs">{{ log }}</div>
-    </mat-list>
-  </div>
+  <h3>Script</h3>
+  <ngx-codemirror
+    class="script"
+    *ngIf="ready"
+    #codeMirror
+    [(ngModel)]="rule.script"
+    [options]="editorOptions"
+  ></ngx-codemirror>
+  <h3>Logs:</h3>
+  <ngx-codemirror class="logs" *ngIf="ready" #logWindow [(ngModel)]="logs" [options]="logOptions"></ngx-codemirror>
 </div>
 
 <mat-dialog-actions align="end">

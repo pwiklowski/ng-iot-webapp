@@ -14,6 +14,7 @@ import beautify_js from "js-beautify";
 })
 export class RuleEditorComponent implements OnInit {
   @ViewChild("codeMirror") codeMirror: any;
+  @ViewChild("logWindow") logWindow: any;
 
   devices = Array<DeviceConfig>();
   ruleId = null;
@@ -22,7 +23,7 @@ export class RuleEditorComponent implements OnInit {
 
   deviceUuid = "";
 
-  logs = Array<string>();
+  logs: string = "";
 
   editorOptions = {
     lineNumbers: true,
@@ -34,6 +35,14 @@ export class RuleEditorComponent implements OnInit {
     mode: { name: "javascript", json: true },
     gutters: ["CodeMirror-lint-markers"],
     lint: true,
+  };
+
+  logOptions = {
+    lineNumbers: true,
+    styleActiveLine: true,
+    autoRefresh: true,
+    mode: { name: "javascript", json: true },
+    readOnly: true,
   };
 
   constructor(
@@ -54,7 +63,7 @@ export class RuleEditorComponent implements OnInit {
 
     this.iot.getController().logs.subscribe((logLine: any) => {
       if (logLine.ruleId === this.ruleId) {
-        this.logs.push(logLine.ruleLogLine);
+        this.logs += logLine.ruleLogLine + "\n";
       }
     });
 
