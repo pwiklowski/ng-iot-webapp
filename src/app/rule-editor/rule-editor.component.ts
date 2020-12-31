@@ -125,4 +125,20 @@ export class RuleEditorComponent implements OnInit {
       this.rule.script.length > 0
     );
   }
+
+  insertTextAtCursor(editor, text) {
+    var doc = editor.getDoc();
+    var cursor = doc.getCursor();
+    doc.replaceRange(text, cursor);
+  }
+
+  putGetValueToEditor(deviceUuid, variableUuid, value) {
+    const code = `// e.x. ${JSON.stringify(value)} \nconst value = getValue("${deviceUuid}","${variableUuid}");`;
+    this.insertTextAtCursor(this.codeMirror.codeMirror, code);
+  }
+
+  putSetValueToEditor(deviceUuid, variableUuid, value) {
+    const code = `setValue("${deviceUuid}","${variableUuid}", ${JSON.stringify(value, null, 2)});`;
+    this.insertTextAtCursor(this.codeMirror.codeMirror, code);
+  }
 }

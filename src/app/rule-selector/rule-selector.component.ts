@@ -37,7 +37,8 @@ export class RuleSelectorComponent implements OnInit {
 
   openRule(ruleId: string) {
     const dialogRef = this.dialog.open(RuleEditorComponent, {
-      width: "80%",
+      width: "95%",
+      height: "95%",
       data: { ruleId },
       disableClose: true,
     });
@@ -62,7 +63,8 @@ export class RuleSelectorComponent implements OnInit {
 
   createRule() {
     const dialogRef = this.dialog.open(RuleEditorComponent, {
-      width: "80%",
+      width: "95%",
+      height: "95%",
       disableClose: true,
     });
     this.dialogRef.close();

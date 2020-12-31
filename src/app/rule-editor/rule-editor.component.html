@@ -23,13 +23,57 @@
   </div>
 
   <h3>Script</h3>
-  <ngx-codemirror
-    class="script"
-    *ngIf="ready"
-    #codeMirror
-    [(ngModel)]="rule.script"
-    [options]="editorOptions"
-  ></ngx-codemirror>
+
+  <div class="code">
+    <ngx-codemirror
+      class="script"
+      *ngIf="ready"
+      #codeMirror
+      [(ngModel)]="rule.script"
+      [options]="editorOptions"
+    ></ngx-codemirror>
+
+    <div class="device-list-container">
+      <div class="device-list">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let device of devices">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="connection-indicator" [class.disconnected]="!device?.isConnected"></div>
+
+                {{ device.name }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p></p>
+            <mat-accordion>
+              <mat-expansion-panel *ngFor="let variable of device.vars | keyvalue">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{ variable.value.name }}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>
+                  {{ variable.value.value | json }}
+                </div>
+                <button
+                  mat-stroked-button
+                  (click)="putGetValueToEditor(device.deviceUuid, variable.key, variable.value.value)"
+                >
+                  Get
+                </button>
+                <button
+                  mat-stroked-button
+                  (click)="putSetValueToEditor(device.deviceUuid, variable.key, variable.value.value)"
+                >
+                  Set
+                </button>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
   <h3>Logs:</h3>
   <ngx-codemirror class="logs" *ngIf="ready" #logWindow [(ngModel)]="logs" [options]="logOptions"></ngx-codemirror>
 </div>

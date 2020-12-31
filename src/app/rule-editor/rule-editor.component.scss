@@ -3,7 +3,11 @@
 }
 
 .code {
-  width: 100%;
+  flex: 1 1 auto;
+  margin-top: 0;
+  height: 100%;
+  position: relative;
+  display: flex;
 }
 
 ::ng-deep .CodeMirror {
@@ -12,6 +16,21 @@
   font-family: "Ubuntu Mono";
   width: 100%;
 }
+
+.device-list {
+  width: 100%;
+  position: absolute;
+}
+
+.device-list-container {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 250px;
+  position: relative;
+  overflow-y: scroll;
+}
+
 ::ng-deep app-rule-editor {
   display: flex;
   flex-direction: column;
@@ -24,9 +43,9 @@
   display: flex;
   flex-direction: column;
 }
-
 .script {
-  height: 400px;
+  flex-grow: 1;
+  position: relative;
 }
 
 .logs {
@@ -34,9 +53,43 @@
 }
 
 ::ng-deep .script .CodeMirror {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 250px;
   height: 100%;
 }
 
 ::ng-deep .logs .CodeMirror {
   height: 100%;
+}
+
+.mat-expansion-panel-header {
+  height: 32px;
+  font-size: 12px;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  height: 32px;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 8px 8px !important;
+  font-size: 12px;
+  font-family: "ubuntu mono";
+}
+
+.connection-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: lightgreen;
+  border-radius: 5px;
+  position: relative;
+  top: 5px;
+  margin: 2px;
+}
+
+.disconnected {
+  background-color: red;
 }
