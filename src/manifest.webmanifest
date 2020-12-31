@@ -1,6 +1,6 @@
 {
-  "name": "iot-christmas-webapp",
-  "short_name": "iot-christmas-webapp",
+  "name": "iot-dash",
+  "short_name": "iot-dash",
   "theme_color": "#009000",
   "background_color": "white",
   "display": "standalone",
