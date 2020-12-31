@@ -108,7 +108,6 @@ export class RuleEditorComponent implements OnInit {
     } else {
       this.iot.createRule(this.rule).subscribe(() => {
         this.snackBar.open("Rule created", null);
-        this.dialogRef.close();
       });
     }
   }
