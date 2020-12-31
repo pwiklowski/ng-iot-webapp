@@ -8,6 +8,7 @@ import { MatBottomSheet, MatBottomSheetRef } from "@angular/material/bottom-shee
 import { MatDialog } from "@angular/material/dialog";
 import { RuleSelectorComponent } from "./rule-selector/rule-selector.component";
 import { ChangeDetectorRef } from "@angular/core";
+import { ViewChild } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -15,10 +16,14 @@ import { ChangeDetectorRef } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
+  @ViewChild("content") content: any;
+
   version: string;
   connectionState: ConnectionState = ConnectionState.DISCONNECTED;
   devices = Array<DeviceConfig>();
   controller: Controller;
+  columnsCount = 2;
+  columns = Array<number>();
 
   constructor(
     private iot: IotService,
@@ -60,6 +65,28 @@ export class AppComponent {
         return device;
       });
     });
+  }
+
+  ngAfterViewInit() {
+    const count = Math.floor(this.content.nativeElement.offsetWidth / 400);
+
+    if (count != this.columnsCount) {
+      this.columnsCount = count;
+      this.columns = Array(this.columnsCount)
+        .fill(1)
+        .map((x, i) => i);
+    }
+  }
+
+  onResize($event) {
+    const count = Math.floor($event.target.innerWidth / 400);
+
+    if (count != this.columnsCount) {
+      this.columnsCount = count;
+      this.columns = Array(this.columnsCount)
+        .fill(1)
+        .map((x, i) => i);
+    }
   }
 
   onConnected() {

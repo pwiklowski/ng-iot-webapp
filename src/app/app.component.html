@@ -7,7 +7,7 @@
     <button mat-raised-button color="warn" class="logout" (click)="logout()">Logout</button>
   </div>
 
-  <div class="content" *ngIf="isConnected()">
+  <div #content class="content" *ngIf="isConnected()" (window:resize)="onResize($event)">
     <button mat-fab class="rule-editor-button" (click)="openRuleEditor()" matTooltip="Rules" matTooltipPosition="left">
       <mat-icon>rule</mat-icon>
     </button>
@@ -20,9 +20,15 @@
     >
       <mat-icon>settings_remote</mat-icon>
     </button>
-    <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
+
+    <div class="device-column" *ngFor="let column of columns; let i = index">
+      <ng-container *ngFor="let device of devices; let j = index">
+        <app-iot-device *ngIf="j % columnsCount === i" class="box" deviceUuid="{{ device.deviceUuid }}">
+        </app-iot-device>
+      </ng-container>
+    </div>
   </div>
-  <div class="content" *ngIf="!isConnected()">Connecting...</div>
+  <div #content class="content" *ngIf="!isConnected()">Connecting...</div>
 
   <div class="footer">v{{ version }}</div>
 </div>
