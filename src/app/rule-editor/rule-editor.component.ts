@@ -35,6 +35,8 @@ export class RuleEditorComponent implements OnInit {
     mode: { name: "javascript", json: true },
     gutters: ["CodeMirror-lint-markers"],
     lint: true,
+    tabSize: 2,
+    autoCloseTags: true,
   };
 
   logOptions = {
