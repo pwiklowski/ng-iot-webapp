@@ -8,8 +8,6 @@
   </div>
 
   <div class="content" *ngIf="isConnected()">
-    <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
-
     <button mat-fab class="rule-editor-button" (click)="openRuleEditor()" matTooltip="Rules" matTooltipPosition="left">
       <mat-icon>rule</mat-icon>
     </button>
@@ -22,6 +20,7 @@
     >
       <mat-icon>settings_remote</mat-icon>
     </button>
+    <app-iot-device *ngFor="let device of devices" class="box" deviceUuid="{{ device.deviceUuid }}"> </app-iot-device>
   </div>
   <div class="content" *ngIf="!isConnected()">Connecting...</div>
 
