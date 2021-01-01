@@ -44,6 +44,7 @@ import { MatListModule } from "@angular/material/list";
 import { ConfirmationDialogComponent } from "./rule-selector/confirmation-dialog/confirmation-dialog.component";
 import { CodemirrorModule } from "@ctrl/ngx-codemirror";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { AliasDialogComponent } from './iot-device/alias-dialog/alias-dialog.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     RuleEditorComponent,
     RuleSelectorComponent,
     ConfirmationDialogComponent,
+    AliasDialogComponent,
   ],
   imports: [
     BrowserModule,

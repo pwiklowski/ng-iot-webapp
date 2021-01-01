@@ -1,7 +1,15 @@
 <div class="container">
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="createAlias()">Create alias</button>
+  </mat-menu>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="options-button">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
   <div class="connection-indicator" [class.disconnected]="!deviceConfig?.isConnected"></div>
   <div *ngIf="alias === undefined" class="name">{{ deviceConfig?.name }}</div>
-  <div *ngIf="alias !== null" class="name">{{ alias?.name }}</div>
+  <div *ngIf="alias !== undefined" class="name">{{ alias?.name }}</div>
+
   <div *ngFor="let variable of deviceConfig?.vars | keyvalue" class="variable">
     <div class="variable-name">
       {{ variable.value.name }}
