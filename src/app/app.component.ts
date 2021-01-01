@@ -112,4 +112,12 @@ export class AppComponent {
       minWidth: 350,
     });
   }
+
+  deviceRemoved(deviceUuid) {
+    const index = this.devices.findIndex((device) => device.deviceUuid === deviceUuid);
+
+    if (index > -1) {
+      this.devices.splice(index, 1);
+    }
+  }
 }

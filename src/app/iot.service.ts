@@ -117,4 +117,8 @@ export class IotService {
   createAlias(alias: Alias) {
     return this.http.post(`${this.BASE_URL}/aliases`, alias);
   }
+
+  deleteDevice(deviceUuid: string) {
+    return this.http.delete(`${this.BASE_URL}/devices?deviceUuid=${deviceUuid}`);
+  }
 }

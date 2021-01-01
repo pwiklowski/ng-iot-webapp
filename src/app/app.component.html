@@ -23,7 +23,12 @@
 
     <div class="device-column" *ngFor="let column of columns; let i = index">
       <ng-container *ngFor="let device of devices; let j = index">
-        <app-iot-device *ngIf="j % columnsCount === i" class="box" deviceUuid="{{ device.deviceUuid }}">
+        <app-iot-device
+          *ngIf="j % columnsCount === i"
+          class="box"
+          deviceUuid="{{ device.deviceUuid }}"
+          (removed)="deviceRemoved(device.deviceUuid)"
+        >
         </app-iot-device>
       </ng-container>
     </div>

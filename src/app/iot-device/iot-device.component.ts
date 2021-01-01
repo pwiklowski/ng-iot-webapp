@@ -1,8 +1,9 @@
 import { AliasDialogComponent } from "./alias-dialog/alias-dialog.component";
 import { IotService } from "./../iot.service";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit } from "@angular/core";
 import { DeviceConfig, Alias } from "@wiklosoft/ng-iot";
 import { MatDialog } from "@angular/material/dialog";
+import { Output } from "@angular/core";
 
 @Component({
   selector: "app-iot-device",
@@ -11,6 +12,7 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class IotDeviceComponent implements OnInit {
   @Input() deviceUuid: string;
+  @Output() removed = new EventEmitter();
 
   deviceConfig: DeviceConfig = null;
 
@@ -51,6 +53,12 @@ export class IotDeviceComponent implements OnInit {
           });
         }
       }
+    });
+  }
+
+  removeDevice() {
+    this.iot.deleteDevice(this.deviceUuid).subscribe(() => {
+      this.removed.emit();
     });
   }
 }
