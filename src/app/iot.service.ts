@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AuthService } from "@auth0/auth0-angular";
-import { Controller, ConnectionState, Rule, Preset } from "@wiklosoft/ng-iot";
+import { Controller, ConnectionState, Rule, Preset, Alias } from "@wiklosoft/ng-iot";
+import { Subject } from "rxjs/internal/Subject";
 import { environment } from "src/environments/environment";
 
 const RECONNECT_DELAY = 5000;
@@ -13,6 +14,8 @@ export class IotService {
   controller: Controller;
   connectionState: ConnectionState = -1;
   BASE_URL = environment.BASE_URL;
+
+  aliases = new Subject<Array<Alias>>();
 
   constructor(public auth: AuthService, private http: HttpClient) {
     this.controller = new Controller();
@@ -31,6 +34,8 @@ export class IotService {
       }
       this.connectionState = state;
     });
+
+    this.getAliases().subscribe((aliases: Array<Alias>) => this.aliases.next(aliases));
   }
 
   connect() {
@@ -87,5 +92,25 @@ export class IotService {
 
   createPreset(preset: Preset) {
     return this.http.post(`${this.BASE_URL}/presets`, preset);
+  }
+
+  getAliases() {
+    return this.http.get(`${this.BASE_URL}/aliases`);
+  }
+
+  getAlias(aliasId: string) {
+    return this.http.get(`${this.BASE_URL}/aliases/${aliasId}`);
+  }
+
+  updateAlias(aliasId: string, alias: Alias) {
+    return this.http.patch(`${this.BASE_URL}/aliases/${alias}`, alias);
+  }
+
+  deleteAlias(aliasId: string) {
+    return this.http.delete(`${this.BASE_URL}/aliases/${aliasId}`);
+  }
+
+  createAlias(alias: Alias) {
+    return this.http.post(`${this.BASE_URL}/aliases`, alias);
   }
 }

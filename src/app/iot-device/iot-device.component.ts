@@ -1,6 +1,6 @@
 import { IotService } from "./../iot.service";
 import { Component, Input, OnInit } from "@angular/core";
-import { DeviceConfig } from "@wiklosoft/ng-iot";
+import { DeviceConfig, Alias } from "@wiklosoft/ng-iot";
 import { MatDialog } from "@angular/material/dialog";
 
 @Component({
@@ -13,9 +13,15 @@ export class IotDeviceComponent implements OnInit {
 
   deviceConfig: DeviceConfig = null;
 
+  alias: Alias = undefined;
+
   constructor(private iot: IotService, public dialog: MatDialog) {}
 
   async ngOnInit() {
     this.deviceConfig = await this.iot.getController().getDevice(this.deviceUuid);
+
+    this.iot.aliases.subscribe((aliases: Array<Alias>) => {
+      this.alias = aliases.find((alias) => alias.deviceUuid === this.deviceUuid);
+    });
   }
 }

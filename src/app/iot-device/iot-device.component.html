@@ -1,6 +1,7 @@
 <div class="container">
   <div class="connection-indicator" [class.disconnected]="!deviceConfig?.isConnected"></div>
-  <div class="name">{{ deviceConfig?.name }}</div>
+  <div *ngIf="alias === undefined" class="name">{{ deviceConfig?.name }}</div>
+  <div *ngIf="alias !== null" class="name">{{ alias?.name }}</div>
   <div *ngFor="let variable of deviceConfig?.vars | keyvalue" class="variable">
     <div class="variable-name">
       {{ variable.value.name }}
