@@ -1,3 +1,4 @@
+import { DeviceConfigDialogComponent } from "./device-config-dialog/device-config-dialog.component";
 import { AliasDialogComponent } from "./alias-dialog/alias-dialog.component";
 import { IotService } from "./../iot.service";
 import { Component, EventEmitter, Input, OnInit } from "@angular/core";
@@ -59,6 +60,12 @@ export class IotDeviceComponent implements OnInit {
   removeDevice() {
     this.iot.deleteDevice(this.deviceUuid).subscribe(() => {
       this.removed.emit();
+    });
+  }
+
+  showDeviceConfig() {
+    this.dialog.open(DeviceConfigDialogComponent, {
+      data: { config: JSON.stringify(this.deviceConfig, null, 2) },
     });
   }
 }

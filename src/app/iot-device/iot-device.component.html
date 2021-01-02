@@ -1,7 +1,8 @@
 <div class="container">
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="removeDevice()">Remove</button>
     <button mat-menu-item (click)="createAlias()">Create alias</button>
+    <button mat-menu-item (click)="showDeviceConfig()">Device Config</button>
+    <button mat-menu-item (click)="removeDevice()">Remove</button>
   </mat-menu>
   <button mat-icon-button [matMenuTriggerFor]="menu" class="options-button">
     <mat-icon>more_vert</mat-icon>
