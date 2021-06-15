@@ -1,6 +1,50 @@
 # IotDash
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
+This project contains repository for iot dashboard, angular application for controlling iot devices. This is a part of an ng-iot project. For more apps see:
+
+- Common library used in all JS projects - https://github.com/pwiklowski/lib-ng-iot
+- Core of iot solution, handles all connections form devices and controllers - https://github.com/pwiklowski/ng-iot-gateway
+- Common library used in all C projects - https://github.com/pwiklowski/ng-iot-esp-idf-library
+- Esp32 firmware for PWM led drivers - https://github.com/pwiklowski/ng-iot-esp32-rgb-led-driver
+- Esp32 firmware for addressable led strips - https://github.com/pwiklowski/ng-iot-esp32-ws2812
+- Node application for iot<->Zigbee adapter - https://github.com/pwiklowski/ng-iot-router-box
+
+# Screenshots
+
+### Rule editor
+
+![Alt text](screenshots/1.png)
+
+### Device list
+
+![Alt text](screenshots/2.png)
+
+### Device config preview
+
+![Alt text](screenshots/4.png)
+
+## Demo
+
+https://youtu.be/3aviC4TlLGU
+
+# Devices
+
+### 3 Channel PWM led driver
+
+![Alt text](screenshots/iot_3ch_driver.jpg)
+
+### 6 Channel PWM led driver
+
+![Alt text](screenshots/iot_6ch_driver.jpg)
+![Alt text](screenshots/iot_6ch_driver2.jpg)
+
+### Christmas tree XS
+
+![Alt text](screenshots/christmas_tree_1.jpg)
+
+### Christmas tree L
+
+![Alt text](screenshots/christmas_tree_2.jpg)
 
 ## Development server
 
