@@ -12,6 +12,9 @@ export class RootComponent implements OnInit {
   constructor(public auth: AuthService) {
     auth.isAuthenticated$.subscribe((res) => {
       this.isLoggedIn = res;
+      if (!this.isLoggedIn) {
+        this.auth.loginWithRedirect();
+      }
     });
   }
 
