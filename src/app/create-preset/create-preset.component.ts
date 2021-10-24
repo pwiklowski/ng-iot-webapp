@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { MatDialogRef } from "@angular/material/dialog";
 import { MatAccordion } from "@angular/material/expansion";
-import { DeviceConfig, Preset, VariablePreset } from "@wiklosoft/ng-iot";
+import { Alias, DeviceConfig, Preset, VariablePreset } from "@wiklosoft/ng-iot";
 import { IotService } from "../iot.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -19,6 +19,7 @@ export class CreatePresetComponent {
   devices = Array<DeviceConfig>();
   name: string;
   presets = Array<VariablePreset>();
+  aliases = new Array<Alias>();
 
   constructor(
     public dialogRef: MatDialogRef<CreatePresetComponent>,
@@ -29,6 +30,15 @@ export class CreatePresetComponent {
       this.devices = devices;
       console.log(devices);
     });
+
+    this.iot.aliases.subscribe((aliases: Array<Alias>) => {
+      this.aliases = aliases;
+    });
+  }
+
+  getName(device: DeviceConfig) {
+    const alias = this.aliases.find((alias) => alias.deviceUuid === device.deviceUuid);
+    return alias ? alias.name : device.name;
   }
 
   onNoClick(): void {
