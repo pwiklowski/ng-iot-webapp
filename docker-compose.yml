@@ -3,9 +3,7 @@ version: "2"
 services:
   frontend:
     restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: registry.wiklosoft.com/iot-dash:3.2.0
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.iot-dash.rule=Host(`iot-dash.wiklosoft.com`)"
