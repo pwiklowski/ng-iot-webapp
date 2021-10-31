@@ -1,6 +1,7 @@
-image: node:latest
+image: node:16-alpine
 
 
 build:
   script:
-    - bash build.sh
+    - apk add --no-cache jq docker
+    - sh build.sh
