@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
+  BASE_URL: "https://iot.wiklosoft.com",
   iotServer: "wss://iot.wiklosoft.com/connect/controller",
-  BASE_URL: "http://127.0.0.1:8080",
-  redirectUri: "http://127.0.0.1:4200/login",
   clientId: "iot",
 };
 
