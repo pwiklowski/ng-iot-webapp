@@ -3,7 +3,7 @@ version: "2"
 services:
   frontend:
     restart: always
-    image: registry.wiklosoft.com/iot-dash:3.2.0
+    image: registry.wiklosoft.com/iot-dash:${VERSION}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.iot-dash.rule=Host(`iot-dash.wiklosoft.com`)"
