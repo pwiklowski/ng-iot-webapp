@@ -1,39 +1,21 @@
-<div class="page">
-  <div class="header">
-    <img src="assets/logo.png" class="logo" />
-    <div *ngIf="auth.user$ | async as user" class="user-info">
-      {{ user.name }}
-    </div>
-    <button mat-raised-button color="warn" class="logout" (click)="logout()">Logout</button>
+<div #content class="content" *ngIf="isConnected()" (window:resize)="onResize($event)">
+  <button mat-fab class="rule-editor-button" (click)="openRuleEditor()" matTooltip="Rules" matTooltipPosition="left">
+    <mat-icon>rule</mat-icon>
+  </button>
+  <button mat-fab class="presets-editor-button" (click)="openPresets()" matTooltip="Presets" matTooltipPosition="left">
+    <mat-icon>settings_remote</mat-icon>
+  </button>
+
+  <div class="device-column" *ngFor="let column of columns; let i = index">
+    <ng-container *ngFor="let device of devices; let j = index">
+      <app-iot-device
+        *ngIf="j % columnsCount === i"
+        class="box"
+        deviceUuid="{{ device.deviceUuid }}"
+        (removed)="deviceRemoved(device.deviceUuid)"
+      >
+      </app-iot-device>
+    </ng-container>
   </div>
-
-  <div #content class="content" *ngIf="isConnected()" (window:resize)="onResize($event)">
-    <button mat-fab class="rule-editor-button" (click)="openRuleEditor()" matTooltip="Rules" matTooltipPosition="left">
-      <mat-icon>rule</mat-icon>
-    </button>
-    <button
-      mat-fab
-      class="presets-editor-button"
-      (click)="openPresets()"
-      matTooltip="Presets"
-      matTooltipPosition="left"
-    >
-      <mat-icon>settings_remote</mat-icon>
-    </button>
-
-    <div class="device-column" *ngFor="let column of columns; let i = index">
-      <ng-container *ngFor="let device of devices; let j = index">
-        <app-iot-device
-          *ngIf="j % columnsCount === i"
-          class="box"
-          deviceUuid="{{ device.deviceUuid }}"
-          (removed)="deviceRemoved(device.deviceUuid)"
-        >
-        </app-iot-device>
-      </ng-container>
-    </div>
-  </div>
-  <div #content class="content" *ngIf="!isConnected()">Connecting...</div>
-
-  <div class="footer">v{{ version }}</div>
 </div>
+<div #content class="content" *ngIf="!isConnected()">Connecting...</div>

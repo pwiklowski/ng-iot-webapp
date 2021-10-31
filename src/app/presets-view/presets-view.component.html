@@ -1,0 +1,4 @@
+<div class="presets-buttons">
+  <app-preset-button *ngFor="let preset of savedPresets" [preset]="preset" (onPresetsChanged)="reloadPresets()">
+  </app-preset-button>
+</div>

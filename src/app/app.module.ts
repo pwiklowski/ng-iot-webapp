@@ -44,8 +44,9 @@ import { MatListModule } from "@angular/material/list";
 import { ConfirmationDialogComponent } from "./rule-selector/confirmation-dialog/confirmation-dialog.component";
 import { CodemirrorModule } from "@ctrl/ngx-codemirror";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { AliasDialogComponent } from './iot-device/alias-dialog/alias-dialog.component';
-import { DeviceConfigDialogComponent } from './iot-device/device-config-dialog/device-config-dialog.component';
+import { AliasDialogComponent } from "./iot-device/alias-dialog/alias-dialog.component";
+import { DeviceConfigDialogComponent } from "./iot-device/device-config-dialog/device-config-dialog.component";
+import { PresetsViewComponent } from './presets-view/presets-view.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { DeviceConfigDialogComponent } from './iot-device/device-config-dialog/d
     ConfirmationDialogComponent,
     AliasDialogComponent,
     DeviceConfigDialogComponent,
+    PresetsViewComponent,
   ],
   imports: [
     BrowserModule,

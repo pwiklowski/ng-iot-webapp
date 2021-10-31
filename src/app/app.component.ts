@@ -1,7 +1,6 @@
 import { PresetsComponent } from "./presets/presets.component";
 import { Component } from "@angular/core";
 import { IotService } from "./iot.service";
-import { version } from "../../package.json";
 import { ConnectionState, Controller, DeviceConfig } from "@wiklosoft/ng-iot";
 import { AuthService } from "@auth0/auth0-angular";
 import { MatBottomSheet, MatBottomSheetRef } from "@angular/material/bottom-sheet";
@@ -18,7 +17,6 @@ import { ViewChild } from "@angular/core";
 export class AppComponent {
   @ViewChild("content") content: any;
 
-  version: string;
   connectionState: ConnectionState = ConnectionState.DISCONNECTED;
   devices = Array<DeviceConfig>();
   controller: Controller;
@@ -32,7 +30,6 @@ export class AppComponent {
     public dialog: MatDialog,
     private cdr: ChangeDetectorRef
   ) {
-    this.version = version;
     this.controller = iot.getController();
 
     this.controller.getConnectionState().subscribe((state: ConnectionState) => {

@@ -1,4 +1,17 @@
 <div class="loading" *ngIf="isLoggedIn === undefined"></div>
 <ng-container *ngIf="isLoggedIn === true">
-  <router-outlet></router-outlet>
+  <div class="page">
+    <div class="header">
+      <img src="assets/logo.png" class="logo" />
+      <div *ngIf="auth.user$ | async as user" class="user-info">
+        {{ user.name }}
+      </div>
+      <button mat-raised-button color="warn" class="logout" (click)="logout()">Logout</button>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="footer">v{{ version }}</div>
+  </div>
 </ng-container>
