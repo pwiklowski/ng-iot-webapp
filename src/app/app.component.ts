@@ -44,7 +44,7 @@ export class AppComponent {
       if (device) {
         this.devices = this.devices.map((device) => {
           if (device.deviceUuid === connectedDevice.deviceUuid) {
-            return { ...device, isConnected: false };
+            return { ...device, isConnected: true };
           }
           return device;
         });
