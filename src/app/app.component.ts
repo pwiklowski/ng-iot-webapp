@@ -64,25 +64,26 @@ export class AppComponent {
     });
   }
 
+  drawColumns(count: number) {
+    this.columnsCount = count;
+    this.columns = Array(this.columnsCount)
+      .fill(1)
+      .map((x, i) => i);
+  }
+
   ngAfterViewInit() {
     const count = Math.floor(this.content.nativeElement.offsetWidth / 400);
 
-    if (count != this.columnsCount) {
-      this.columnsCount = count;
-      this.columns = Array(this.columnsCount)
-        .fill(1)
-        .map((x, i) => i);
-    }
+    setTimeout(() => {
+      this.drawColumns(count);
+    }, 0);
   }
 
   onResize($event) {
     const count = Math.floor($event.target.innerWidth / 400);
 
     if (count != this.columnsCount) {
-      this.columnsCount = count;
-      this.columns = Array(this.columnsCount)
-        .fill(1)
-        .map((x, i) => i);
+      this.drawColumns(count);
     }
   }
 

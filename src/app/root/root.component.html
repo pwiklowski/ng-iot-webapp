@@ -3,9 +3,14 @@
   <div class="page">
     <div class="header">
       <img src="assets/logo.png" class="logo" />
+      <mat-button-toggle-group (change)="onToggleChange(group)" #group="matButtonToggleGroup" class="navigation">
+        <mat-button-toggle value="presets">Presets</mat-button-toggle>
+        <mat-button-toggle value="">Devices</mat-button-toggle>
+      </mat-button-toggle-group>
       <div *ngIf="auth.user$ | async as user" class="user-info">
         {{ user.name }}
       </div>
+
       <button mat-raised-button color="warn" class="logout" (click)="logout()">Logout</button>
     </div>
     <div class="content">

@@ -46,7 +46,8 @@ import { CodemirrorModule } from "@ctrl/ngx-codemirror";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { AliasDialogComponent } from "./iot-device/alias-dialog/alias-dialog.component";
 import { DeviceConfigDialogComponent } from "./iot-device/device-config-dialog/device-config-dialog.component";
-import { PresetsViewComponent } from './presets-view/presets-view.component';
+import { PresetsViewComponent } from "./presets-view/presets-view.component";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { PresetsViewComponent } from './presets-view/presets-view.component';
     FormsModule,
     CodemirrorModule,
     MatTooltipModule,
+    MatButtonToggleModule,
   ],
   providers: [
     KeyValuePipe,
