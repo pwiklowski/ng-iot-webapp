@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
-import { Preset } from "../../../../library/build";
 import { IotService } from "../iot.service";
+import { Preset } from "@wiklosoft/ng-iot";
 
 @Component({
   selector: "app-presets-view",
