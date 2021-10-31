@@ -28,4 +28,8 @@ export class RootComponent implements OnInit {
   onToggleChange(group: MatButtonToggleGroup) {
     this.router.navigate([group.value]);
   }
+
+  logout() {
+    this.auth.logout();
+  }
 }

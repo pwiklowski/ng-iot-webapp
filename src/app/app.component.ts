@@ -97,10 +97,6 @@ export class AppComponent {
     return this.connectionState === ConnectionState.CONNECTED;
   }
 
-  logout() {
-    this.auth.logout();
-  }
-
   openPresets() {
     this.presets.open(PresetsComponent);
   }
